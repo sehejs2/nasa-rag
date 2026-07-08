@@ -14,6 +14,7 @@ dependencies = [
     "beautifulsoup4>=4.12",
     "pypdf>=5.0",
     "tiktoken>=0.8",
+    "tenacity>=9.0",
 ]
 
 [dependency-groups]
@@ -37,3 +38,6 @@ target-version = "py311"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+markers = [
+    "integration: requires a reachable Postgres instance (auto-skipped if unreachable)",
+]

@@ -26,12 +26,20 @@ User query → Agent router (LLM decides: retrieve vs. live tool vs. both)
   structure is the only signal available for finding good split points.
 - Streaming: Server-Sent Events from FastAPI.
 - Package management: uv. Run commands via Makefile targets.
+- Idempotent ingestion: each chunk row stores a content_hash (sha256 of chunk
+  text). A chunk is only sent to the embeddings API if it's new, its
+  content_hash differs from what's stored (text changed upstream), or a prior
+  run left its embedding NULL (crashed/failed before finishing). Unchanged
+  chunks are skipped with zero API calls and zero DB writes. Chunk rows are
+  upserted before embedding, with embedding forced to NULL whenever
+  content_hash changes, so `make ingest` can be killed at any point and
+  re-run safely — no duplicate rows, no silently-dropped failures.
 
 ## Build phases
 
 0. Scaffold (this file, FastAPI skeleton, docker-compose) — DONE
 1. Corpus ingestion + structure-aware chunking (no embeddings yet) — DONE
-2. Embedding pipeline + pgvector storage, idempotent ingestion CLI
+2. Embedding pipeline + pgvector storage, idempotent ingestion CLI — DONE
 3. Retrieval + reranking, /retrieve debug endpoint
 4. NASA tool layer with function-calling schemas, mocked tests
 5. Agent router loop + routing test set (~15 labeled queries)
@@ -58,3 +66,6 @@ User query → Agent router (LLM decides: retrieve vs. live tool vs. both)
 - make db-up / make db-down — local pgvector Postgres
 - make corpus — fetch NASA documents into data/raw/ (see scripts/fetch_corpus.py)
 - make chunk — chunk data/raw/ into data/processed/chunks.jsonl (see scripts/chunk_corpus.py)
+- make db-init — create/upgrade the pgvector schema (documents, chunks, HNSW index)
+- make ingest — embed chunks.jsonl and upsert into Postgres, idempotently (see scripts/ingest.py)
+- make search q="..." — debug tool: top-5 cosine-similarity matches for a query (see scripts/search_smoke.py)
