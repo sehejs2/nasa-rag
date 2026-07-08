@@ -11,17 +11,7 @@ import sys
 
 from app.ingestion.db import get_connection, init_schema
 from app.ingestion.embedder import Embedder
-
-TOP_K = 5
-
-SEARCH_SQL = """
-SELECT c.text, c.section, d.title, 1 - (c.embedding <=> %(query_embedding)s) AS similarity
-FROM chunks c
-JOIN documents d ON d.doc_id = c.doc_id
-WHERE c.embedding IS NOT NULL
-ORDER BY c.embedding <=> %(query_embedding)s
-LIMIT %(limit)s
-"""
+from app.ingestion.search import TOP_K, similarity_search
 
 
 async def embed_query(query: str) -> list[float]:
@@ -41,7 +31,7 @@ def main() -> None:
 
     conn = get_connection()
     init_schema(conn)
-    rows = conn.execute(SEARCH_SQL, {"query_embedding": query_embedding, "limit": TOP_K}).fetchall()
+    rows = similarity_search(conn, query_embedding, TOP_K)
     conn.close()
 
     if not rows:

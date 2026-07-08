@@ -119,11 +119,19 @@ def upsert_pending_chunk_rows(conn: psycopg.Connection, pending: list[dict[str, 
 
 
 def write_embeddings(conn: psycopg.Connection, embeddings: dict[str, list[float]]) -> None:
+    """Write embeddings (plain list[float], as returned by Embedder) into the vector column.
+
+    Cast to ::vector explicitly - psycopg has no dumper registered for plain
+    Python lists, so an uncast parameter would be sent as a double precision[]
+    array. Assignment happens to tolerate that via an implicit cast, but the
+    equivalent `<=>` comparison in app/ingestion/search.py does not, so we cast
+    explicitly here too rather than rely on that asymmetry.
+    """
     if not embeddings:
         return
     with conn.cursor() as cur:
         cur.executemany(
-            "UPDATE chunks SET embedding = %(embedding)s WHERE chunk_id = %(chunk_id)s",
+            "UPDATE chunks SET embedding = %(embedding)s::vector WHERE chunk_id = %(chunk_id)s",
             [{"chunk_id": cid, "embedding": vec} for cid, vec in embeddings.items()],
         )
 

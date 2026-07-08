@@ -9,6 +9,7 @@ from app.ingestion.ingest import (
     fetch_existing_state,
     upsert_documents,
     upsert_pending_chunk_rows,
+    write_embeddings,
 )
 
 pytestmark = pytest.mark.integration
@@ -64,10 +65,7 @@ def test_unchanged_chunk_skipped_on_second_pass(db_conn):
     upsert_pending_chunk_rows(db_conn, first_pass_pending)
 
     # Simulate a successful embedding write, as ingest.main() would do.
-    db_conn.execute(
-        "UPDATE chunks SET embedding = %s WHERE chunk_id = %s",
-        ([0.1] * 1536, chunk["chunk_id"]),
-    )
+    write_embeddings(db_conn, {chunk["chunk_id"]: [0.1] * 1536})
 
     existing = fetch_existing_state(db_conn)
     second_pass_pending = determine_pending([chunk], existing)
@@ -83,10 +81,7 @@ def test_changed_content_gets_reembedded_and_replaces_old_row(db_conn):
     existing = fetch_existing_state(db_conn)
     pending = determine_pending([original], existing)
     upsert_pending_chunk_rows(db_conn, pending)
-    db_conn.execute(
-        "UPDATE chunks SET embedding = %s WHERE chunk_id = %s",
-        ([0.1] * 1536, original["chunk_id"]),
-    )
+    write_embeddings(db_conn, {original["chunk_id"]: [0.1] * 1536})
 
     updated = _chunk("chunk-change", "completely different text", "doc-change")
     existing = fetch_existing_state(db_conn)
