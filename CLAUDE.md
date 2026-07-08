@@ -17,14 +17,20 @@ User query → Agent router (LLM decides: retrieve vs. live tool vs. both)
 - Vector store: Postgres + pgvector (local via docker-compose, pgvector/pgvector:pg16).
 - Embeddings: OpenAI text-embedding-3-small.
 - Answer model: gpt-4o-mini.
-- Chunking: semantic chunking (structure/meaning-aware), not fixed-length.
+- Chunking: structure-aware, not fixed-length or embedding-based semantic chunking.
+  Documents are split on structural boundaries (headings, paragraph breaks) first,
+  then packed sentence-by-sentence into chunks targeting 300-500 tokens (tiktoken,
+  cl100k_base) with ~50 tokens of trailing overlap carried into the next chunk.
+  Chunks never split mid-sentence. Chosen over embedding-based semantic chunking
+  because embeddings are a Phase 2 concern — Phase 1 has no model calls, so
+  structure is the only signal available for finding good split points.
 - Streaming: Server-Sent Events from FastAPI.
 - Package management: uv. Run commands via Makefile targets.
 
 ## Build phases
 
 0. Scaffold (this file, FastAPI skeleton, docker-compose) — DONE
-1. Corpus ingestion + semantic chunking (no embeddings yet)
+1. Corpus ingestion + structure-aware chunking (no embeddings yet) — DONE
 2. Embedding pipeline + pgvector storage, idempotent ingestion CLI
 3. Retrieval + reranking, /retrieve debug endpoint
 4. NASA tool layer with function-calling schemas, mocked tests
@@ -50,3 +56,5 @@ User query → Agent router (LLM decides: retrieve vs. live tool vs. both)
 - make test — pytest
 - make lint — ruff
 - make db-up / make db-down — local pgvector Postgres
+- make corpus — fetch NASA documents into data/raw/ (see scripts/fetch_corpus.py)
+- make chunk — chunk data/raw/ into data/processed/chunks.jsonl (see scripts/chunk_corpus.py)

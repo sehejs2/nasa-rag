@@ -1,0 +1,3 @@
+A small technical note with no section headings at all. This paragraph exists to check that documents without any heading markers still chunk correctly. The chunker should fall back to a null section heading in this case. It should not crash or misinterpret plain paragraphs as headings.
+
+This is a second paragraph in the same document. It is separated from the first by a blank line, which is the only structural signal available in this fixture. There should be no heading metadata captured for either paragraph.
