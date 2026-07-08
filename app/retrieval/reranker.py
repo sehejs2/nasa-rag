@@ -20,6 +20,12 @@ RERANK_MODEL = "gpt-4o-mini"
 MAX_PASSAGE_CHARS_FOR_PROMPT = 1000
 MAX_RERANK_ATTEMPTS = 2
 
+# The SDK's own default timeout is 600s (read/write/pool) with 2 internal
+# retries on top - a single stalled request can silently eat 30+ minutes.
+# We do our own retry loop below, so disable the SDK's and cap each request
+# at a much shorter, explicit timeout instead.
+OPENAI_REQUEST_TIMEOUT_SECONDS = 30.0
+
 logger = logging.getLogger(__name__)
 
 
@@ -77,7 +83,11 @@ class LLMReranker:
     """
 
     def __init__(self, client: AsyncOpenAI | None = None):
-        self._client = client or AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+        self._client = client or AsyncOpenAI(
+            api_key=settings.OPENAI_API_KEY,
+            timeout=OPENAI_REQUEST_TIMEOUT_SECONDS,
+            max_retries=0,
+        )
         self._fallback = NoopReranker()
 
     async def rerank(

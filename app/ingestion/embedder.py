@@ -23,6 +23,12 @@ BATCH_SIZE = 100
 MAX_CONCURRENT_BATCHES = 4
 MAX_ATTEMPTS = 5
 
+# The SDK's own default timeout is 600s (read/write/pool) with 2 internal
+# retries on top - a single stalled request can silently eat 30+ minutes.
+# We do our own retry/backoff above, so disable the SDK's and cap each
+# request at a much shorter, explicit timeout instead.
+OPENAI_REQUEST_TIMEOUT_SECONDS = 30.0
+
 logger = logging.getLogger(__name__)
 
 _RETRYABLE_ERRORS = (RateLimitError, APIConnectionError, APITimeoutError, InternalServerError)
@@ -47,7 +53,11 @@ class Embedder:
     """Batches embedding requests with bounded concurrency and retry/backoff."""
 
     def __init__(self, client: AsyncOpenAI | None = None):
-        self._client = client or AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+        self._client = client or AsyncOpenAI(
+            api_key=settings.OPENAI_API_KEY,
+            timeout=OPENAI_REQUEST_TIMEOUT_SECONDS,
+            max_retries=0,
+        )
         self._semaphore = asyncio.Semaphore(MAX_CONCURRENT_BATCHES)
 
     @retry(
