@@ -1,0 +1,34 @@
+[
+  {
+    "query": "Approximately how many individual stars did Webb's imaging survey resolve within the M82 Cigar Galaxy?",
+    "expected_doc_id": "nasa-s-webb-pinpoints-millions-of-stars-within-cigar-galaxy-92176d97"
+  },
+  {
+    "query": "By how many degrees Fahrenheit did Webb observe the temperature of exoplanet HD 80606 b spike as it swept close to its star?",
+    "expected_doc_id": "nasa-s-webb-catches-exoplanet-getting-roasted-fe3b3711"
+  },
+  {
+    "query": "Does the exoplanet TRAPPIST-1 e still have its original primary atmosphere, according to Webb's observations?",
+    "expected_doc_id": "nasa-webb-looks-at-earth-sized-habitable-zone-exoplanet-trap-5a993473"
+  },
+  {
+    "query": "How many individual images were assembled into Perseverance's westernmost selfie near Jezero Crater?",
+    "expected_doc_id": "nasa-s-perseverance-rover-snaps-westernmost-selfie-7b291b95"
+  },
+  {
+    "query": "What new JPL technology let the Perseverance rover pinpoint its own location on Mars for the first time without help from Earth?",
+    "expected_doc_id": "perseverance-pinpoints-its-location-at-mala-mala-d1746f76"
+  },
+  {
+    "query": "How much did the rock that got stuck on Curiosity's drill in 2026 weigh?",
+    "expected_doc_id": "nasa-s-curiosity-rover-frees-its-drill-from-a-rock-98365642"
+  },
+  {
+    "query": "What was the first US commercial spacecraft mission to operate at the Moon?",
+    "expected_doc_id": "nasa-s-capstone-completes-extended-mission-testing-lunar-tec-2b551e7f"
+  },
+  {
+    "query": "About how many acres of wooded land did NASA transfer from its Goddard Space Flight Center to the Patuxent Research Refuge?",
+    "expected_doc_id": "nasa-transfers-hundred-acre-wood-to-patuxent-research-refuge-2d601fae"
+  }
+]

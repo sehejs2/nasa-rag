@@ -8,5 +8,9 @@ class Settings(BaseSettings):
     NASA_API_KEY: str = ""
     DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/nasa_rag"
 
+    RETRIEVAL_CANDIDATE_POOL_SIZE: int = 20
+    RETRIEVAL_TOP_K: int = 5
+    RETRIEVAL_RERANK_ENABLED: bool = True
+
 
 settings = Settings()

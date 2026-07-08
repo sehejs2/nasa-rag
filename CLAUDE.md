@@ -34,13 +34,22 @@ User query → Agent router (LLM decides: retrieve vs. live tool vs. both)
   upserted before embedding, with embedding forced to NULL whenever
   content_hash changes, so `make ingest` can be killed at any point and
   re-run safely — no duplicate rows, no silently-dropped failures.
+- Retrieval is two-stage: stage 1 (recall) embeds the query and pulls the top 20
+  candidates from pgvector by cosine similarity; stage 2 (precision) reranks
+  those 20 down to top_k. Reranking sits behind a small Reranker interface
+  (app/retrieval/reranker.py) so the strategy is swappable: LLMReranker (default)
+  makes one batched gpt-4o-mini call scoring all candidates 0-10 as strict JSON,
+  with one retry on malformed output before falling back to NoopReranker (vector
+  order). A cross-encoder reranker could implement the same interface and be
+  compared against LLMReranker once the Phase 7 eval harness exists to score
+  retrieval quality objectively rather than by feel.
 
 ## Build phases
 
 0. Scaffold (this file, FastAPI skeleton, docker-compose) — DONE
 1. Corpus ingestion + structure-aware chunking (no embeddings yet) — DONE
 2. Embedding pipeline + pgvector storage, idempotent ingestion CLI — DONE
-3. Retrieval + reranking, /retrieve debug endpoint
+3. Retrieval + reranking, /retrieve debug endpoint — DONE
 4. NASA tool layer with function-calling schemas, mocked tests
 5. Agent router loop + routing test set (~15 labeled queries)
 6. Answer composition with inline citations + SSE streaming /chat
