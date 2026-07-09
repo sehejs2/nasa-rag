@@ -14,8 +14,7 @@ WORKDIR /app
 
 # Install dependencies first, without the project itself, so this layer stays
 # cached across app-code-only changes.
-RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
+RUN --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --locked --no-install-project --no-dev
 
@@ -23,8 +22,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 # etc. out of the build context) and install the project itself.
 COPY pyproject.toml uv.lock ./
 COPY app/ ./app/
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --locked --no-dev
+RUN uv sync --locked --no-dev
 
 
 FROM python:3.11-slim
