@@ -14,13 +14,11 @@ WORKDIR /app
 
 # Install dependencies first, without the project itself, so this layer stays
 # cached across app-code-only changes.
-RUN --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --locked --no-install-project --no-dev
+COPY pyproject.toml uv.lock ./
+RUN uv sync --locked --no-install-project --no-dev
 
 # Now bring in the app source (.dockerignore keeps tests/, frontend/, data/,
 # etc. out of the build context) and install the project itself.
-COPY pyproject.toml uv.lock ./
 COPY app/ ./app/
 RUN uv sync --locked --no-dev
 
