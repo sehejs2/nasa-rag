@@ -44,13 +44,30 @@ User query → Agent router (LLM decides: retrieve vs. live tool vs. both)
   compared against LLMReranker once the Phase 7 eval harness exists to score
   retrieval quality objectively rather than by feel.
 
+## Tools
+
+Live NASA API tools (app/tools/), each with an OpenAI function-calling schema,
+a typed async implementation, and a fresh-per-call httpx client (10s timeout,
+2 retries with backoff on timeouts/5xx, no retry on 4xx):
+
+- apod — NASA's Astronomy Picture of the Day for a given (or today's) date. Needs NASA_API_KEY.
+- iss_now — current real-time ISS lat/lon position. No key needed.
+- mars_rover_photos — Perseverance/Curiosity photos by Earth date or sol (or latest if neither given). Needs NASA_API_KEY.
+- jwst_images — JWST-tagged media/caption search via the NASA Image and Video Library (no key needed); JWST *science* questions go to the RAG corpus instead, not this tool.
+
+Convention: tools never raise into the caller. Every tool catches its own
+exceptions and returns `ToolResult(ok=False, error=...)`; the registry
+(app/tools/registry.py) does the same for unknown tool names or invalid args.
+The Phase 5 agent loop can treat every tool call as data, no try/except needed
+around calls into the tool layer.
+
 ## Build phases
 
 0. Scaffold (this file, FastAPI skeleton, docker-compose) — DONE
 1. Corpus ingestion + structure-aware chunking (no embeddings yet) — DONE
 2. Embedding pipeline + pgvector storage, idempotent ingestion CLI — DONE
 3. Retrieval + reranking, /retrieve debug endpoint — DONE
-4. NASA tool layer with function-calling schemas, mocked tests
+4. NASA tool layer with function-calling schemas, mocked tests — DONE
 5. Agent router loop + routing test set (~15 labeled queries)
 6. Answer composition with inline citations + SSE streaming /chat
 7. Eval harness: 30-50 labeled Qs, precision/recall + faithfulness, `make eval`
@@ -78,3 +95,4 @@ User query → Agent router (LLM decides: retrieve vs. live tool vs. both)
 - make db-init — create/upgrade the pgvector schema (documents, chunks, HNSW index)
 - make ingest — embed chunks.jsonl and upsert into Postgres, idempotently (see scripts/ingest.py)
 - make search q="..." — debug tool: top-5 cosine-similarity matches for a query (see scripts/search_smoke.py)
+- make tool name=<tool> args='{"key": "value"}' — manually invoke a NASA tool (see scripts/run_tool.py)

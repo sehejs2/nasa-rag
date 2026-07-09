@@ -1,4 +1,4 @@
-.PHONY: dev test lint db-up db-down db-init corpus chunk ingest search
+.PHONY: dev test lint db-up db-down db-init corpus chunk ingest search tool
 
 dev:
 	uv run uvicorn app.main:app --reload
@@ -29,3 +29,6 @@ ingest:
 
 search:
 	uv run python scripts/search_smoke.py "$(q)"
+
+tool:
+	uv run python scripts/run_tool.py "$(name)" '$(args)'
