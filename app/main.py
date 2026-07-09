@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+from app.agent.loop import run_agent
 from app.retrieval.retriever import retrieve
 
 TEXT_PREVIEW_CHARS = 300
@@ -10,6 +11,10 @@ TEXT_PREVIEW_CHARS = 300
 class RetrieveRequest(BaseModel):
     query: str
     top_k: int | None = None
+
+
+class AgentDebugRequest(BaseModel):
+    query: str
 
 
 def create_app() -> FastAPI:
@@ -47,6 +52,14 @@ def create_app() -> FastAPI:
             for chunk in result.chunks
         ]
         return result.model_copy(update={"chunks": truncated_chunks})
+
+    # Development endpoint: exposes the full internal agent trace (every tool
+    # call, arguments, token usage, the draft answer). No auth by design for
+    # local debugging - must be disabled or protected before any real
+    # deployment (Phase 9 concern), same as /retrieve.
+    @app.post("/agent/debug")
+    async def agent_debug_endpoint(body: AgentDebugRequest):
+        return await run_agent(body.query)
 
     return app
 

@@ -7,7 +7,7 @@ from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
 from typing import Any
 
-from app.tools import apod, iss_now, jwst_images, mars_rover_photos
+from app.tools import apod, iss_now, jwst_images, mars_rover_photos, search_documents
 from app.tools.base import ToolResult
 
 _TYPE_MAP: dict[str, type | tuple[type, ...]] = {
@@ -35,7 +35,7 @@ _TOOLS: dict[str, ToolSpec] = {
         parameters=module.PARAMETERS,
         run=module.run,
     )
-    for module in (apod, iss_now, mars_rover_photos, jwst_images)
+    for module in (apod, iss_now, mars_rover_photos, jwst_images, search_documents)
 }
 
 

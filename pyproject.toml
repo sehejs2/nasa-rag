@@ -47,4 +47,5 @@ asyncio_default_fixture_loop_scope = "function"
 timeout = 60
 markers = [
     "integration: requires a reachable Postgres instance (auto-skipped if unreachable)",
+    "llm: makes real OpenAI model calls (auto-skipped if OPENAI_API_KEY is unset)",
 ]

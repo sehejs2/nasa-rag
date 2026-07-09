@@ -18,7 +18,8 @@ DESCRIPTION = (
     "Get photos taken by NASA's Perseverance or Curiosity Mars rovers on a given "
     "Earth date or mission sol (Martian day). Use for 'show me photos from Mars' "
     "or what a specific rover saw on a specific day; omit both date fields to get "
-    "the rover's most recent photos instead."
+    "the rover's most recent photos instead. Returns imagery only, not science "
+    "findings or mission history - use search_documents for those."
 )
 PARAMETERS: dict = {
     "type": "object",

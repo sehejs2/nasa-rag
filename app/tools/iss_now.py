@@ -10,7 +10,8 @@ NAME = "iss_now"
 DESCRIPTION = (
     "Get the current real-time latitude/longitude position of the International "
     "Space Station. Use for 'where is the ISS right now' style questions; it has "
-    "no memory of past or future positions and takes no parameters."
+    "no memory of past or future positions and takes no parameters. NOT for the "
+    "station's history, crew, or mission purpose - use search_documents for that."
 )
 PARAMETERS: dict = {
     "type": "object",

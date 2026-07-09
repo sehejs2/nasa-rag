@@ -54,12 +54,31 @@ a typed async implementation, and a fresh-per-call httpx client (10s timeout,
 - iss_now — current real-time ISS lat/lon position. No key needed.
 - mars_rover_photos — Perseverance/Curiosity photos by Earth date or sol (or latest if neither given). Needs NASA_API_KEY.
 - jwst_images — JWST-tagged media/caption search via the NASA Image and Video Library (no key needed); JWST *science* questions go to the RAG corpus instead, not this tool.
+- search_documents — the Phase 3 retriever wrapped as a tool; searches the embedded corpus for missions, discoveries, science results, and history. NOT for real-time data (that's the four tools above).
 
 Convention: tools never raise into the caller. Every tool catches its own
 exceptions and returns `ToolResult(ok=False, error=...)`; the registry
 (app/tools/registry.py) does the same for unknown tool names or invalid args.
 The Phase 5 agent loop can treat every tool call as data, no try/except needed
 around calls into the tool layer.
+
+## Agent
+
+The agent loop (app/agent/loop.py) routes via native OpenAI function calling
+over the unified tool registry, not a hand-written classifier: retrieval is
+just another entry in the same registry as the four live NASA tools
+(search_documents alongside apod/iss_now/mars_rover_photos/jwst_images), so
+gpt-4o-mini picks whichever tools (zero, one, or several, in parallel) a query
+needs using the same tool-calling mechanism throughout. The loop is a plain
+hand-rolled message loop over the OpenAI SDK (system + user messages, append
+tool results as tool-role messages, repeat until the model returns
+content with no tool calls, or a max-iteration guard forces one final
+no-tools completion). Every tool result — including ok=False failures — is
+serialized back to the model as data rather than raised, so a failed live API
+call just becomes something the model reasons about (retry differently, use
+another tool, or answer without it) instead of crashing the request. Route
+("retrieval" | "tools" | "both" | "direct") is derived after the fact from
+which tool names were actually called, not decided up front.
 
 ## Build phases
 
@@ -68,7 +87,7 @@ around calls into the tool layer.
 2. Embedding pipeline + pgvector storage, idempotent ingestion CLI — DONE
 3. Retrieval + reranking, /retrieve debug endpoint — DONE
 4. NASA tool layer with function-calling schemas, mocked tests — DONE
-5. Agent router loop + routing test set (~15 labeled queries)
+5. Agent router loop + routing test set (~15 labeled queries) — DONE
 6. Answer composition with inline citations + SSE streaming /chat
 7. Eval harness: 30-50 labeled Qs, precision/recall + faithfulness, `make eval`
 8. Next.js frontend: streamed chat, citations, retrieval-vs-tool badge
@@ -96,3 +115,4 @@ around calls into the tool layer.
 - make ingest — embed chunks.jsonl and upsert into Postgres, idempotently (see scripts/ingest.py)
 - make search q="..." — debug tool: top-5 cosine-similarity matches for a query (see scripts/search_smoke.py)
 - make tool name=<tool> args='{"key": "value"}' — manually invoke a NASA tool (see scripts/run_tool.py)
+- make ask q="..." — run the agent loop end-to-end and print the trace + draft answer (see scripts/ask.py)

@@ -9,7 +9,7 @@ from app.tools import registry
 def test_get_openai_tools_schemas_are_valid():
     tools = registry.get_openai_tools()
 
-    assert len(tools) == 4
+    assert len(tools) == 5
     names = set()
     for tool in tools:
         assert tool["type"] == "function"
@@ -24,7 +24,7 @@ def test_get_openai_tools_schemas_are_valid():
         assert isinstance(params["required"], list)
         names.add(fn["name"])
 
-    assert names == {"apod", "iss_now", "mars_rover_photos", "jwst_images"}
+    assert names == {"apod", "iss_now", "mars_rover_photos", "jwst_images", "search_documents"}
 
 
 async def test_execute_unknown_tool_name():

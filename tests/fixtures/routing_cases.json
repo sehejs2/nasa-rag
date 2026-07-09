@@ -1,0 +1,98 @@
+[
+  {
+    "query": "How many individual stars did Webb's imaging survey resolve within the M82 Cigar Galaxy?",
+    "expected_route": "retrieval",
+    "expected_tools": ["search_documents"],
+    "notes": "Grounded in a real corpus doc; should route to document retrieval only."
+  },
+  {
+    "query": "What new JPL technology let the Perseverance rover pinpoint its own location on Mars without help from Earth?",
+    "expected_route": "retrieval",
+    "expected_tools": ["search_documents"],
+    "notes": "Historical/technical fact from the corpus (Mars Global Localization), not a live-data question."
+  },
+  {
+    "query": "What was the first US commercial spacecraft mission to operate at the Moon?",
+    "expected_route": "retrieval",
+    "expected_tools": ["search_documents"],
+    "notes": "CAPSTONE mission history, answered by the corpus."
+  },
+  {
+    "query": "Why did Webb observe such an extreme temperature swing on the exoplanet HD 80606 b?",
+    "expected_route": "retrieval",
+    "expected_tools": ["search_documents"],
+    "notes": "Science explanation question, corpus-grounded."
+  },
+  {
+    "query": "What happened when NASA transferred land from Goddard Space Flight Center to Patuxent Research Refuge?",
+    "expected_route": "retrieval",
+    "expected_tools": ["search_documents"],
+    "notes": "General NASA news/history question, corpus-grounded."
+  },
+  {
+    "query": "Where is the ISS right now?",
+    "expected_route": "tools",
+    "expected_tools": ["iss_now"],
+    "notes": "Clear real-time position question."
+  },
+  {
+    "query": "What is today's astronomy picture of the day?",
+    "expected_route": "tools",
+    "expected_tools": ["apod"],
+    "notes": "Clear APOD lookup, no date given so defaults to today."
+  },
+  {
+    "query": "Show me the most recent photos from the Curiosity rover.",
+    "expected_route": "tools",
+    "expected_tools": ["mars_rover_photos"],
+    "notes": "Live imagery request, no date given so should use latest_photos."
+  },
+  {
+    "query": "Show me a JWST image of the Carina Nebula.",
+    "expected_route": "tools",
+    "expected_tools": ["jwst_images"],
+    "notes": "Imagery lookup, not a science/discovery question - should NOT hit search_documents."
+  },
+  {
+    "query": "What's the current latitude and longitude of the space station?",
+    "expected_route": "tools",
+    "expected_tools": ["iss_now"],
+    "notes": "Rephrased real-time ISS position question, different wording than case 6."
+  },
+  {
+    "query": "Where is the ISS right now, and what was its original mission purpose?",
+    "expected_route": "both",
+    "expected_tools": ["iss_now", "search_documents"],
+    "notes": "Mixes real-time position with historical/explanatory context."
+  },
+  {
+    "query": "What does today's APOD show, and has Webb studied anything similar before?",
+    "expected_route": "both",
+    "expected_tools": ["apod", "search_documents"],
+    "notes": "Mixes today's picture with a corpus-grounded follow-up."
+  },
+  {
+    "query": "Show me a recent Perseverance rover photo and tell me about the rover's mission history.",
+    "expected_route": "both",
+    "expected_tools": ["mars_rover_photos", "search_documents"],
+    "notes": "Mixes live imagery with mission history/background."
+  },
+  {
+    "query": "What's the best pizza topping?",
+    "expected_route": "direct",
+    "expected_tools": [],
+    "notes": "Off-topic; agent should decline rather than invent a tool call."
+  },
+  {
+    "query": "hey",
+    "expected_route": "direct",
+    "expected_tools": [],
+    "notes": "Empty-ish smalltalk, no tool needed."
+  },
+  {
+    "query": "Can you help me plan a birthday party?",
+    "expected_route": "direct",
+    "expected_tools": [],
+    "notes": "Off-topic request unrelated to NASA data."
+  }
+]

@@ -23,7 +23,7 @@ DESCRIPTION = (
     "Search NASA's public image/video library for JWST-related pictures and their "
     "captions (e.g. 'show me a JWST photo of the Carina Nebula'). Returns media and "
     "caption metadata only, not scientific findings - for JWST discoveries or "
-    "science questions, prefer document retrieval over this tool."
+    "science questions, use search_documents instead."
 )
 PARAMETERS: dict = {
     "type": "object",
