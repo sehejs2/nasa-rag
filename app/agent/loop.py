@@ -18,7 +18,7 @@ from typing import Any
 
 from openai import AsyncOpenAI
 
-from app.agent.models import AgentTrace, TokenUsage, ToolCallRecord
+from app.agent.models import AgentTrace, TokenUsage, ToolCallRecord, accumulate_usage
 from app.agent.prompts import SYSTEM_PROMPT
 from app.config import settings
 from app.retrieval.models import RetrievedChunk
@@ -119,14 +119,6 @@ async def _execute_tool_call(tool_call: Any, iteration: int) -> tuple[ToolCallRe
     return record, result
 
 
-def _accumulate_usage(token_usage: TokenUsage, usage: Any) -> None:
-    if usage is None:
-        return
-    token_usage.prompt_tokens += usage.prompt_tokens or 0
-    token_usage.completion_tokens += usage.completion_tokens or 0
-    token_usage.total_tokens += usage.total_tokens or 0
-
-
 def _build_trace(
     *,
     query: str,
@@ -196,7 +188,7 @@ async def run_agent(
             tools=get_openai_tools(),
             tool_choice="auto",
         )
-        _accumulate_usage(token_usage, response.usage)
+        accumulate_usage(token_usage, response.usage)
 
         message = response.choices[0].message
         assistant_message: dict[str, Any] = {"role": "assistant", "content": message.content}
@@ -245,7 +237,7 @@ async def run_agent(
 
     # Hit max_iterations without a final answer: force one last no-tools completion.
     final_response = await client.chat.completions.create(model=MODEL, messages=messages)
-    _accumulate_usage(token_usage, final_response.usage)
+    accumulate_usage(token_usage, final_response.usage)
 
     return _build_trace(
         query=query,

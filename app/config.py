@@ -12,5 +12,10 @@ class Settings(BaseSettings):
     RETRIEVAL_TOP_K: int = 5
     RETRIEVAL_RERANK_ENABLED: bool = True
 
+    # Model used to judge faithfulness/key-facts in the Phase 7 eval harness.
+    # Defaults to gpt-4o-mini for cost; see app/evals/faithfulness.py for the
+    # same-model-family leniency caveat this knob exists to let you work around.
+    JUDGE_MODEL: str = "gpt-4o-mini"
+
 
 settings = Settings()

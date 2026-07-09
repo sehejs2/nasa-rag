@@ -1,0 +1,3322 @@
+{
+  "run_config": {
+    "git_commit": "37bd5398f4f00ac34999adb8e740b8a6da02b545",
+    "rerank": "both",
+    "retrieval_k": 5,
+    "cases_path": "/Users/sehej_singh/nasa-rag/eval/cases.json",
+    "agent_model": "gpt-4o-mini",
+    "judge_model": "gpt-4o-mini",
+    "generated_at": "2026-07-09T03:30:31.475811+00:00"
+  },
+  "summary": {
+    "total_cases": 40,
+    "n_errored": 0,
+    "errored_case_ids": [],
+    "routing": {
+      "overall": 0.95,
+      "by_category": {
+        "retrieval": 0.9166666666666666,
+        "tools": 1.0,
+        "both": 1.0,
+        "out_of_scope": 1.0
+      },
+      "counts": {
+        "retrieval": 24,
+        "tools": 8,
+        "both": 4,
+        "out_of_scope": 4
+      }
+    },
+    "retrieval": {
+      "n_scored": 28,
+      "mean_precision_at_k": 0.22142857142857145,
+      "mean_recall_at_k": 0.9821428571428571,
+      "mean_mrr": 1.0
+    },
+    "retrieval_rerank_off": {
+      "n_scored": 28,
+      "mean_precision_at_k": 0.22142857142857145,
+      "mean_recall_at_k": 0.9821428571428571,
+      "mean_mrr": 0.9583333333333333
+    },
+    "faithfulness": {
+      "n_scored": 35,
+      "n_zero_claims": 5,
+      "n_judge_errors": 0,
+      "mean_faithfulness": 0.7529931972789116,
+      "supported_total": 121,
+      "unsupported_total": 24,
+      "contradicted_total": 0
+    },
+    "key_facts": {
+      "n_scored": 40,
+      "n_judge_errors": 0,
+      "mean_answer_completeness": 0.5479166666666667
+    },
+    "token_usage": {
+      "prompt_tokens": 203117,
+      "completion_tokens": 14658,
+      "total_tokens": 217775
+    },
+    "estimated_cost_usd": 0.039262349999999994
+  },
+  "cases": [
+    {
+      "case_id": "eval-001",
+      "query": "By how many degrees Fahrenheit did Webb observe the temperature of exoplanet HD 80606 b spike as it swept close to its star?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "The sources do not explicitly state the specific degree Fahrenheit by which the temperature of exoplanet HD 80606 b spiked as it swept close to its star. Therefore, this information is not available in the provided sources.",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-catches-exoplanet-getting-roasted-fe3b3711",
+          "nasa-s-webb-pinpoints-millions-of-stars-within-cigar-galaxy-92176d97",
+          "nasa-s-webb-reveals-stars-sparking-to-life-in-cosmic-celebra-a9ba8d68",
+          "nasa-s-webb-studies-how-planet-survived-death-of-its-star-6d2dbe6d",
+          "apollo-experience-report-mission-evaluation-team-postflight-8a0d7f0f"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-catches-exoplanet-getting-roasted-fe3b3711",
+          "nasa-s-webb-reveals-stars-sparking-to-life-in-cosmic-celebra-a9ba8d68",
+          "nasa-s-webb-pinpoints-millions-of-stars-within-cigar-galaxy-92176d97"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The sources do not explicitly state the specific degree Fahrenheit by which the temperature of exoplanet HD 80606 b spiked.",
+            "verdict": "unsupported"
+          },
+          {
+            "claim": "The information about the temperature spike of exoplanet HD 80606 b is not available in the provided sources.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 0.5,
+        "supported_count": 1,
+        "unsupported_count": 1,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1169,
+          "completion_tokens": 68,
+          "total_tokens": 1237
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Temperature increased by about 1,100 degrees Fahrenheit",
+            "present": false
+          },
+          {
+            "key_fact": "Observed with Webb's MIRI instrument",
+            "present": false
+          },
+          {
+            "key_fact": "Happened near periastron (closest approach to its star)",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 173,
+          "completion_tokens": 7,
+          "total_tokens": 180
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 8917,
+        "completion_tokens": 290,
+        "total_tokens": 9207
+      },
+      "latency_ms": 10615.765624912456,
+      "error": null
+    },
+    {
+      "case_id": "eval-002",
+      "query": "Approximately how many individual stars did Webb's imaging survey resolve within the M82 Cigar Galaxy?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "The James Webb Space Telescope's imaging survey resolved millions of individual stars within the M82 Cigar Galaxy [1][2][3].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-pinpoints-millions-of-stars-within-cigar-galaxy-92176d97",
+          "nasa-s-webb-reveals-stars-sparking-to-life-in-cosmic-celebra-a9ba8d68"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-pinpoints-millions-of-stars-within-cigar-galaxy-92176d97",
+          "nasa-s-webb-reveals-stars-sparking-to-life-in-cosmic-celebra-a9ba8d68"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The James Webb Space Telescope conducted an imaging survey.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The imaging survey resolved millions of individual stars.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The M82 Cigar Galaxy is the subject of the imaging survey.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 3,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 878,
+          "completion_tokens": 53,
+          "total_tokens": 931
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "About 16.5 million individual stars resolved",
+            "present": false
+          },
+          {
+            "key_fact": "Survey used 65 total hours of NIRCam observation time",
+            "present": false
+          },
+          {
+            "key_fact": "M82 is 12 million light-years away",
+            "present": true
+          }
+        ],
+        "answer_completeness": 0.3333333333333333,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 156,
+          "completion_tokens": 10,
+          "total_tokens": 166
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 4806,
+        "completion_tokens": 183,
+        "total_tokens": 4989
+      },
+      "latency_ms": 6454.131208825856,
+      "error": null
+    },
+    {
+      "case_id": "eval-003",
+      "query": "What is unusual about the atmosphere of exoplanet PSR J2322-2650b, which orbits a pulsar?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "The atmosphere of exoplanet PSR J2322-2650b is unusual because it contains molecular carbon, specifically C3 and C2, instead of the typical molecules expected on exoplanets, such as water, methane, and carbon dioxide. This composition suggests that the planet formed in a very different chemical environment compared to planets in our solar system and challenges current understanding of exoplanet formation and atmospheric development [1][3].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-observes-exoplanet-whose-composition-defies-expl-6b567cba",
+          "nasa-s-webb-detects-thick-atmosphere-around-broiling-lava-wo-f136b5df"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-observes-exoplanet-whose-composition-defies-expl-6b567cba",
+          "nasa-s-webb-detects-thick-atmosphere-around-broiling-lava-wo-f136b5df"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The atmosphere of exoplanet PSR J2322-2650b contains molecular carbon, specifically C3 and C2.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The typical molecules expected on exoplanets include water, methane, and carbon dioxide.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The composition of PSR J2322-2650b suggests that it formed in a very different chemical environment compared to planets in our solar system.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The composition of PSR J2322-2650b challenges current understanding of exoplanet formation and atmospheric development.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 4,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1033,
+          "completion_tokens": 120,
+          "total_tokens": 1153
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Atmosphere is dominated by helium and carbon, unlike any seen before",
+            "present": false
+          },
+          {
+            "key_fact": "It is the only known exoplanet with detectable molecular carbon",
+            "present": true
+          },
+          {
+            "key_fact": "It is the only gas-giant-like planet known orbiting a pulsar",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.3333333333333333,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 228,
+          "completion_tokens": 10,
+          "total_tokens": 238
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5172,
+        "completion_tokens": 388,
+        "total_tokens": 5560
+      },
+      "latency_ms": 8829.439041903242,
+      "error": null
+    },
+    {
+      "case_id": "eval-004",
+      "query": "What evidence suggests exoplanet 29 Cygni b formed like a planet rather than a star?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "Evidence suggesting that exoplanet 29 Cygni b formed like a planet rather than a star includes its well-aligned inclination with the star's spin axis, which is consistent with the formation patterns seen in planets within our solar system. This alignment indicates that 29 Cygni b likely formed within a protoplanetary disk through the rapid accretion of metal-rich material, as stated by Balmer [2]. Additionally, the mass of 29 Cygni b is on the lower end of what can plausibly be achieved through this accretion process, while fragmentation processes would typically result in higher masses, further supporting its planetary formation [3].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-redefines-dividing-line-between-planets-stars-c4450d50",
+          "nasa-s-webb-observes-exoplanet-whose-composition-defies-expl-6b567cba"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-redefines-dividing-line-between-planets-stars-c4450d50",
+          "nasa-s-webb-observes-exoplanet-whose-composition-defies-expl-6b567cba"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "Exoplanet 29 Cygni b has a well-aligned inclination with its star's spin axis.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The alignment of 29 Cygni b is consistent with the formation patterns seen in planets within our solar system.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "29 Cygni b likely formed within a protoplanetary disk through the rapid accretion of metal-rich material.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The mass of 29 Cygni b is on the lower end of what can plausibly be achieved through the accretion process.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Fragmentation processes typically result in higher masses than that of 29 Cygni b.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 5,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1128,
+          "completion_tokens": 148,
+          "total_tokens": 1276
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Ground-based CHARA interferometer found the planet's orbit is aligned with its star's spin",
+            "present": true
+          },
+          {
+            "key_fact": "That alignment indicates formation via disk accretion, not gas fragmentation",
+            "present": true
+          },
+          {
+            "key_fact": "The planet is enriched in heavy elements equivalent to about 150 Earths' worth of metals",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.6666666666666666,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 283,
+          "completion_tokens": 10,
+          "total_tokens": 293
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5322,
+        "completion_tokens": 621,
+        "total_tokens": 5943
+      },
+      "latency_ms": 11302.329999860376,
+      "error": null
+    },
+    {
+      "case_id": "eval-005",
+      "query": "What is notable about the redshift Webb confirmed for galaxy MoM-z14, and how does it compare to the previous distance record holder?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "The galaxy MoM-z14 has a confirmed redshift that corresponds to a time when it existed 280 million years after the Big Bang, making it notable for being one of the oldest galaxies observed. This redshift surpasses the previous distance record holder, which was identified as existing 350 million years after the Big Bang, indicating Webb's ability to push closer to the cosmic dawn [1].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-webb-pushes-boundaries-of-observable-universe-closer-to-4575aa87",
+          "nasa-webb-finds-strongest-evidence-yet-for-black-hole-stars-11eae9e1",
+          "nasa-s-webb-reveals-black-hole-that-formed-before-its-galaxy-90f28c32",
+          "nasa-s-webb-pinpoints-millions-of-stars-within-cigar-galaxy-92176d97",
+          "nasa-s-webb-telescope-locates-former-star-that-exploded-as-s-a589d9f6"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-webb-pushes-boundaries-of-observable-universe-closer-to-4575aa87",
+          "nasa-webb-finds-strongest-evidence-yet-for-black-hole-stars-11eae9e1",
+          "nasa-s-webb-reveals-black-hole-that-formed-before-its-galaxy-90f28c32"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The galaxy MoM-z14 has a confirmed redshift that corresponds to a time when it existed 280 million years after the Big Bang.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "MoM-z14 is one of the oldest galaxies observed.",
+            "verdict": "unsupported"
+          },
+          {
+            "claim": "The previous distance record holder existed 350 million years after the Big Bang.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The redshift of MoM-z14 surpasses the previous distance record holder.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The Webb telescope has the ability to push closer to the cosmic dawn.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 0.8,
+        "supported_count": 4,
+        "unsupported_count": 1,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1362,
+          "completion_tokens": 111,
+          "total_tokens": 1473
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "MoM-z14 has a confirmed redshift of 14.44",
+            "present": false
+          },
+          {
+            "key_fact": "It existed roughly 280 million years after the Big Bang",
+            "present": true
+          },
+          {
+            "key_fact": "The previous record holder, GN-z11, existed about 400 million years after the Big Bang",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.3333333333333333,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 222,
+          "completion_tokens": 10,
+          "total_tokens": 232
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 6993,
+        "completion_tokens": 465,
+        "total_tokens": 7458
+      },
+      "latency_ms": 16252.13637505658,
+      "error": null
+    },
+    {
+      "case_id": "eval-006",
+      "query": "How did NASA's Webb telescope help identify the progenitor star of supernova 2025pht?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "NASA's Webb telescope helped identify the progenitor star of supernova 2025pht by providing infrared observations that detected the star in the spiral galaxy NGC 1637, which was not visible to the Hubble Space Telescope due to heavy dust surrounding it. The Webb observations revealed the red supergiant star before it exploded, while Hubble captured the light from the supernova aftermath, confirming that the extreme obscuration by dust was significant in this case [2][3].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-telescope-locates-former-star-that-exploded-as-s-a589d9f6",
+          "nasa-s-webb-reveals-stars-sparking-to-life-in-cosmic-celebra-a9ba8d68"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-telescope-locates-former-star-that-exploded-as-s-a589d9f6",
+          "nasa-s-webb-reveals-stars-sparking-to-life-in-cosmic-celebra-a9ba8d68"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "NASA's Webb telescope helped identify the progenitor star of supernova 2025pht.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The progenitor star was detected in the spiral galaxy NGC 1637.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The progenitor star was not visible to the Hubble Space Telescope due to heavy dust surrounding it.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The Webb observations revealed the red supergiant star before it exploded.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Hubble captured the light from the supernova aftermath.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The extreme obscuration by dust was significant in this case.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 6,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1033,
+          "completion_tokens": 121,
+          "total_tokens": 1154
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Pre-existing Webb images from 2024 (MIRI and NIRCam) had already imaged the progenitor star",
+            "present": false
+          },
+          {
+            "key_fact": "The progenitor was an unusually red, dusty red supergiant star",
+            "present": true
+          },
+          {
+            "key_fact": "It was the first published detection of a supernova progenitor by Webb",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.3333333333333333,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 248,
+          "completion_tokens": 10,
+          "total_tokens": 258
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5118,
+        "completion_tokens": 446,
+        "total_tokens": 5564
+      },
+      "latency_ms": 18450.22545894608,
+      "error": null
+    },
+    {
+      "case_id": "eval-007",
+      "query": "What new JPL technology let the Perseverance rover pinpoint its own location on Mars for the first time without help from Earth, and how accurate is it?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "The new technology that allows the Perseverance rover to pinpoint its own location on Mars without Earth\u2019s assistance is called Mars Global Localization. This technology uses the rover's navigation cameras to capture a 360-degree view of the terrain, which is then matched to onboard orbital imagery from NASA\u2019s Mars Reconnaissance Orbiter (MRO) [1][2][3]. The accuracy of this localization is not explicitly mentioned in the sources provided.",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "perseverance-pinpoints-its-location-at-mala-mala-d1746f76",
+          "mars-global-localization-pinpoints-perseverance-s-location-cf260dea",
+          "nasa-s-hirise-captures-perseverance-marking-a-milestone-on-m-e4e758ca",
+          "visualizing-perseverance-s-ai-planned-drive-on-mars-f88f9fd7"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "perseverance-pinpoints-its-location-at-mala-mala-d1746f76",
+          "nasa-s-hirise-captures-perseverance-marking-a-milestone-on-m-e4e758ca",
+          "mars-global-localization-pinpoints-perseverance-s-location-cf260dea",
+          "nasa-s-perseverance-captures-panorama-at-arbot-7c110877"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The new technology that allows the Perseverance rover to pinpoint its own location on Mars without Earth\u2019s assistance is called Mars Global Localization.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Mars Global Localization uses the rover's navigation cameras to capture a 360-degree view of the terrain.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Mars Global Localization matches the captured terrain view to onboard orbital imagery from NASA\u2019s Mars Reconnaissance Orbiter (MRO).",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The accuracy of this localization is not explicitly mentioned in the sources provided.",
+            "verdict": "unsupported"
+          }
+        ],
+        "faithfulness": 0.75,
+        "supported_count": 3,
+        "unsupported_count": 1,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1057,
+          "completion_tokens": 110,
+          "total_tokens": 1167
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "The technology is called Mars Global Localization",
+            "present": true
+          },
+          {
+            "key_fact": "It determines location within about 10 inches (25 centimeters)",
+            "present": false
+          },
+          {
+            "key_fact": "The process takes about two minutes and reuses a processor originally built for Ingenuity communications",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.3333333333333333,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 222,
+          "completion_tokens": 10,
+          "total_tokens": 232
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5180,
+        "completion_tokens": 440,
+        "total_tokens": 5620
+      },
+      "latency_ms": 18686.802208190784,
+      "error": null
+    },
+    {
+      "case_id": "eval-008",
+      "query": "What distance milestone did Perseverance reach in June 2026, and how does that compare to the previous record holder?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "In June 2026, Perseverance reached a distance milestone of a full marathon, traveling 26.2 miles (42.195 kilometers) on Mars. This achievement came after five years and four months of driving on the 1,890th Martian day (sol) of its mission. The previous record holder, NASA's Opportunity rover, had taken 11 years and two months to reach the same distance [1].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-hirise-captures-perseverance-marking-a-milestone-on-m-e4e758ca",
+          "curiosity-blog-sols-4920-4926-surveying-the-bands-3c4a5abb",
+          "nasa-s-perseverance-mars-rover-surveys-crocodile-bridge-ec88ef4a",
+          "video-perseverance-rover-s-view-of-crater-rim-drive-8d70774f",
+          "visualizing-perseverance-s-ai-planned-drive-on-mars-f88f9fd7"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-hirise-captures-perseverance-marking-a-milestone-on-m-e4e758ca",
+          "video-perseverance-rover-s-view-of-crater-rim-drive-8d70774f",
+          "nasa-s-perseverance-mars-rover-surveys-crocodile-bridge-ec88ef4a",
+          "visualizing-perseverance-s-ai-planned-drive-on-mars-f88f9fd7",
+          "mars-global-localization-pinpoints-perseverance-s-location-cf260dea"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "Perseverance reached a distance milestone of a full marathon in June 2026.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Perseverance traveled 26.2 miles (42.195 kilometers) on Mars.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Perseverance achieved this milestone after five years and four months of driving.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The milestone was reached on the 1,890th Martian day (sol) of Perseverance's mission.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "NASA's Opportunity rover took 11 years and two months to reach the same distance.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 5,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1041,
+          "completion_tokens": 120,
+          "total_tokens": 1161
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Perseverance reached a marathon distance of 26.2 miles (42.195 km)",
+            "present": true
+          },
+          {
+            "key_fact": "It took Perseverance 5 years and 4 months to reach that distance",
+            "present": true
+          },
+          {
+            "key_fact": "The previous record holder, Opportunity, took 11 years and 2 months to reach the same distance",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 240,
+          "completion_tokens": 10,
+          "total_tokens": 250
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5124,
+        "completion_tokens": 395,
+        "total_tokens": 5519
+      },
+      "latency_ms": 19565.317291067913,
+      "error": null
+    },
+    {
+      "case_id": "eval-009",
+      "query": "What curious finding about dark rocks near Curiosity's 'land of the polygons' terrain raised the question of whether they might be meteorites?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "The curious finding about dark rocks near Curiosity's 'land of the polygons' terrain that raised the question of whether they might be meteorites was their darker tone and rougher texture, as indicated from orbital images and observed by the rover [4].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "curiosity-blog-sols-4934-4940-in-the-land-of-the-polygons-f7a07879",
+          "curiosity-blog-sols-4927-4933-let-s-drive-to-that-smooth-are-d508c6d9",
+          "curiosity-blog-sols-4920-4926-surveying-the-bands-3c4a5abb",
+          "curiosity-blog-sols-4913-4919-planetary-explorers-freewheeli-ef97626a"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "curiosity-blog-sols-4934-4940-in-the-land-of-the-polygons-f7a07879",
+          "curiosity-blog-sols-4927-4933-let-s-drive-to-that-smooth-are-d508c6d9",
+          "curiosity-blog-sols-4913-4919-planetary-explorers-freewheeli-ef97626a",
+          "curiosity-blog-sols-4908-4912-goodbye-campo-marte-it-s-been-f78c85eb",
+          "curiosity-blog-sols-4886-4892-ingenuity-and-perseverance-cur-b76a133a"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "There are dark rocks near Curiosity's 'land of the polygons' terrain.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The dark rocks have a darker tone and rougher texture.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The darker tone and rougher texture of the rocks were indicated from orbital images.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The darker tone and rougher texture of the rocks were observed by the rover.",
+            "verdict": "unsupported"
+          }
+        ],
+        "faithfulness": 0.75,
+        "supported_count": 3,
+        "unsupported_count": 1,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 975,
+          "completion_tokens": 83,
+          "total_tokens": 1058
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Dark 'float' rocks in the area were found to contain nickel",
+            "present": false
+          },
+          {
+            "key_fact": "Nickel is common in meteorites but less common in typical Martian rocks",
+            "present": false
+          },
+          {
+            "key_fact": "This raised an open question about whether the dark pebble/cobble-sized rocks are meteorites",
+            "present": true
+          }
+        ],
+        "answer_completeness": 0.3333333333333333,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 195,
+          "completion_tokens": 10,
+          "total_tokens": 205
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5083,
+        "completion_tokens": 298,
+        "total_tokens": 5381
+      },
+      "latency_ms": 24004.90408297628,
+      "error": null
+    },
+    {
+      "case_id": "eval-010",
+      "query": "How deep did Curiosity drill at the 'Campo Marte' target, and how does that compare to its usual drilling depth?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "Curiosity drilled at the 'Campo Marte' target to a depth of 5 centimeters. This depth is consistent with its usual drilling depth for similar operations [1][2].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "curiosity-blog-sols-4900-4907-pasadena-we-have-a-drill-sampl-f6da741f",
+          "curiosity-blog-sols-4908-4912-goodbye-campo-marte-it-s-been-f78c85eb",
+          "curiosity-blog-sols-4879-4885-struggle-at-atacama-d47ee019",
+          "curiosity-blog-sols-4873-4878-welcome-to-the-atacama-drill-t-5b21e4b1",
+          "nasa-s-curiosity-rover-frees-its-drill-from-a-rock-98365642"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "retrieved_doc_ids": [
+          "curiosity-blog-sols-4908-4912-goodbye-campo-marte-it-s-been-f78c85eb",
+          "curiosity-blog-sols-4879-4885-struggle-at-atacama-d47ee019",
+          "curiosity-blog-sols-4900-4907-pasadena-we-have-a-drill-sampl-f6da741f",
+          "curiosity-blog-sols-4873-4878-welcome-to-the-atacama-drill-t-5b21e4b1",
+          "curiosity-blog-sols-4893-4899-drilling-at-campo-marte-and-a-987196b8",
+          "nasa-s-curiosity-rover-frees-its-drill-from-a-rock-98365642",
+          "curiosity-blog-sols-4886-4892-ingenuity-and-perseverance-cur-b76a133a"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "Curiosity drilled at the 'Campo Marte' target to a depth of 5 centimeters.",
+            "verdict": "unsupported"
+          },
+          {
+            "claim": "The depth of 5 centimeters is consistent with Curiosity's usual drilling depth for similar operations.",
+            "verdict": "unsupported"
+          }
+        ],
+        "faithfulness": 0.0,
+        "supported_count": 0,
+        "unsupported_count": 2,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1080,
+          "completion_tokens": 54,
+          "total_tokens": 1134
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Curiosity drilled to a depth of about 28 mm (roughly 1.1 inches)",
+            "present": true
+          },
+          {
+            "key_fact": "That is shallower than its usual drilling depth of about 35 mm (1.38 inches)",
+            "present": false
+          },
+          {
+            "key_fact": "One sample portion went to the CheMin instrument; four more were planned for SAM",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.3333333333333333,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 188,
+          "completion_tokens": 10,
+          "total_tokens": 198
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 6539,
+        "completion_tokens": 357,
+        "total_tokens": 6896
+      },
+      "latency_ms": 27761.52233290486,
+      "error": null
+    },
+    {
+      "case_id": "eval-011",
+      "query": "Why are the rocks along Jezero Crater's rim considered especially scientifically valuable?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "The rocks along Jezero Crater's rim are considered especially scientifically valuable because they hold geological features and sedimentary structures that can provide insights into the history and evolution of Mars, particularly regarding past water activity and potential habitability for ancient life. Observations from the landscape around Jezero Crater have indicated that these areas are rich in interesting geological formations and sedimentary features, making them a priority for study by the rover missions [1][2]. However, specific details about the unique scientific value of these rocks are not explicitly provided in the sources.",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-perseverance-mars-rover-surveys-crocodile-bridge-ec88ef4a",
+          "curiosity-blog-sols-4913-4919-planetary-explorers-freewheeli-ef97626a",
+          "nasa-s-curiosity-takes-close-look-at-rock-that-got-stuck-on-0f72ca80",
+          "curiosity-blog-sols-4908-4912-goodbye-campo-marte-it-s-been-f78c85eb",
+          "examining-algal-blooms-in-blue-mesa-43f6338f",
+          "nasa-s-curiosity-rover-frees-its-drill-from-a-rock-98365642",
+          "curiosity-blog-sols-4879-4885-struggle-at-atacama-d47ee019"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-perseverance-mars-rover-surveys-crocodile-bridge-ec88ef4a",
+          "curiosity-blog-sols-4913-4919-planetary-explorers-freewheeli-ef97626a",
+          "nasa-s-curiosity-takes-close-look-at-rock-that-got-stuck-on-0f72ca80",
+          "curiosity-blog-sols-4908-4912-goodbye-campo-marte-it-s-been-f78c85eb",
+          "examining-algal-blooms-in-blue-mesa-43f6338f",
+          "curiosity-blog-sols-4900-4907-pasadena-we-have-a-drill-sampl-f6da741f",
+          "video-perseverance-rover-s-view-of-crater-rim-drive-8d70774f"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The rocks along Jezero Crater's rim are considered scientifically valuable.",
+            "verdict": "unsupported"
+          },
+          {
+            "claim": "The rocks hold geological features and sedimentary structures that can provide insights into the history and evolution of Mars.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The geological features and sedimentary structures relate to past water activity and potential habitability for ancient life.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Observations from the landscape around Jezero Crater indicate that these areas are rich in interesting geological formations and sedimentary features.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The rocks at Jezero Crater are a priority for study by rover missions.",
+            "verdict": "unsupported"
+          }
+        ],
+        "faithfulness": 0.6,
+        "supported_count": 3,
+        "unsupported_count": 2,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1410,
+          "completion_tokens": 122,
+          "total_tokens": 1532
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "They are among the oldest rocks in the solar system",
+            "present": false
+          },
+          {
+            "key_fact": "They are preserved because Mars, unlike Earth, lacks tectonic plates that recycle surface material",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 231,
+          "completion_tokens": 8,
+          "total_tokens": 239
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 9630,
+        "completion_tokens": 435,
+        "total_tokens": 10065
+      },
+      "latency_ms": 29447.881833883002,
+      "error": null
+    },
+    {
+      "case_id": "eval-012",
+      "query": "How many images make up the 3D anaglyph version of Perseverance's panorama at 'Arbot'?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "The 3D anaglyph version of Perseverance's panorama at 'Arbot' is made up of 46 images [1].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-perseverance-captures-panorama-at-arbot-7c110877",
+          "nasa-s-perseverance-mars-rover-surveys-crocodile-bridge-ec88ef4a",
+          "video-perseverance-rover-s-view-of-crater-rim-drive-8d70774f",
+          "mars-global-localization-pinpoints-perseverance-s-location-cf260dea",
+          "perseverance-pinpoints-its-location-at-mala-mala-d1746f76"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-perseverance-captures-panorama-at-arbot-7c110877",
+          "nasa-s-perseverance-mars-rover-surveys-crocodile-bridge-ec88ef4a",
+          "video-perseverance-rover-s-view-of-crater-rim-drive-8d70774f",
+          "nasa-s-perseverance-rover-snaps-westernmost-selfie-7b291b95",
+          "mars-global-localization-pinpoints-perseverance-s-location-cf260dea"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The 3D anaglyph version of Perseverance's panorama at 'Arbot' is made up of 46 images.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 1,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 977,
+          "completion_tokens": 41,
+          "total_tokens": 1018
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "The 3D anaglyph version (Figure B) is composed of 92 Mastcam-Z images",
+            "present": false
+          },
+          {
+            "key_fact": "The panorama was captured April 5, 2026 (sol 1,882)",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 163,
+          "completion_tokens": 6,
+          "total_tokens": 169
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5127,
+        "completion_tokens": 176,
+        "total_tokens": 5303
+      },
+      "latency_ms": 26395.85041697137,
+      "error": null
+    },
+    {
+      "case_id": "eval-013",
+      "query": "What was significant about CAPSTONE's role as the first U.S. commercial mission at the Moon?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "CAPSTONE's significance as the first U.S. commercial mission at the Moon lies in its role in validating and advancing lunar navigation and communication technologies necessary for future lunar missions. It was designed to test capabilities for spacecraft to navigate and communicate autonomously without a direct connection to Earth, which is crucial for sustained operations in lunar orbit. CAPSTONE demonstrated these technologies during its mission, particularly when it operated with limited communication access, providing valuable insights into the performance of new systems like autoNGC under challenging conditions [1][2][3].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-capstone-completes-extended-mission-testing-lunar-tec-2b551e7f",
+          "mission-report-apollo-10-aa9ccfab"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-capstone-completes-extended-mission-testing-lunar-tec-2b551e7f",
+          "mission-report-apollo-10-aa9ccfab"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "CAPSTONE is the first U.S. commercial mission at the Moon.",
+            "verdict": "unsupported"
+          },
+          {
+            "claim": "CAPSTONE's role is to validate and advance lunar navigation and communication technologies.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "CAPSTONE was designed to test capabilities for spacecraft to navigate and communicate autonomously without a direct connection to Earth.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Autonomous navigation and communication are crucial for sustained operations in lunar orbit.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "CAPSTONE demonstrated navigation and communication technologies during its mission.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "CAPSTONE operated with limited communication access during its mission.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "CAPSTONE provided valuable insights into the performance of new systems like autoNGC under challenging conditions.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 0.8571428571428571,
+        "supported_count": 6,
+        "unsupported_count": 1,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1017,
+          "completion_tokens": 138,
+          "total_tokens": 1155
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "CAPSTONE was the first spacecraft to fly and characterize a near-rectilinear halo (three-body) orbit",
+            "present": false
+          },
+          {
+            "key_fact": "It received a 15-month mission extension to test autonomous navigation (autoNGC) and delay/disruption tolerant networking",
+            "present": true
+          }
+        ],
+        "answer_completeness": 0.5,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 247,
+          "completion_tokens": 8,
+          "total_tokens": 255
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 4967,
+        "completion_tokens": 607,
+        "total_tokens": 5574
+      },
+      "latency_ms": 34752.17954185791,
+      "error": null
+    },
+    {
+      "case_id": "eval-014",
+      "query": "About how many acres of wooded land did NASA transfer from its Goddard Space Flight Center to the Patuxent Research Refuge?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "NASA transferred about 105 acres of wooded land from its Goddard Space Flight Center to the Patuxent Research Refuge [1].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-transfers-hundred-acre-wood-to-patuxent-research-refuge-2d601fae",
+          "this-is-nasa-e92fdf8e"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-transfers-hundred-acre-wood-to-patuxent-research-refuge-2d601fae",
+          "this-is-nasa-e92fdf8e"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "NASA transferred about 105 acres of wooded land from its Goddard Space Flight Center to the Patuxent Research Refuge.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 1,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 930,
+          "completion_tokens": 39,
+          "total_tokens": 969
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "About 105 acres of wooded land",
+            "present": true
+          },
+          {
+            "key_fact": "The land was formerly known as 'Area 400' and was used for propellant research",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.5,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 148,
+          "completion_tokens": 6,
+          "total_tokens": 154
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 4950,
+        "completion_tokens": 208,
+        "total_tokens": 5158
+      },
+      "latency_ms": 33992.94824991375,
+      "error": null
+    },
+    {
+      "case_id": "eval-015",
+      "query": "How long was New Horizons' most recent hibernation period before it woke on June 23, and how far is the spacecraft from Earth?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "both",
+      "route_correct": false,
+      "answer": "New Horizons' most recent hibernation period lasted 321 days before it woke on June 23 [1]. The sources do not specify the spacecraft's current distance from Earth.",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-new-horizons-spacecraft-wakes-from-hibernation-in-goo-64bc627d",
+          "students-connect-nasa-science-with-indigenous-knowledge-to-s-e87dfd42",
+          "nasa-s-webb-catches-exoplanet-getting-roasted-fe3b3711",
+          "nasa-webb-hubble-share-most-comprehensive-view-of-saturn-to-2d55c540"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-new-horizons-spacecraft-wakes-from-hibernation-in-goo-64bc627d",
+          "students-connect-nasa-science-with-indigenous-knowledge-to-s-e87dfd42",
+          "nasa-s-webb-catches-exoplanet-getting-roasted-fe3b3711",
+          "nasa-webb-hubble-share-most-comprehensive-view-of-saturn-to-2d55c540"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "New Horizons' most recent hibernation period lasted 321 days.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "New Horizons woke on June 23.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The sources do not specify the spacecraft's current distance from Earth.",
+            "verdict": "unsupported"
+          }
+        ],
+        "faithfulness": 0.6666666666666666,
+        "supported_count": 2,
+        "unsupported_count": 1,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 899,
+          "completion_tokens": 55,
+          "total_tokens": 954
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "The hibernation lasted 321 days, its longest yet",
+            "present": true
+          },
+          {
+            "key_fact": "The spacecraft is about 5.9 billion miles (9.5 billion km) from Earth",
+            "present": false
+          },
+          {
+            "key_fact": "Its signal took about 8 hours 52 minutes to reach Earth",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.3333333333333333,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 178,
+          "completion_tokens": 7,
+          "total_tokens": 185
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 4893,
+        "completion_tokens": 244,
+        "total_tokens": 5137
+      },
+      "latency_ms": 34537.28820802644,
+      "error": null
+    },
+    {
+      "case_id": "eval-016",
+      "query": "How large was the Cottonwood fire in Utah as of July 7, 2026, and what NASA tool was used to track it?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "As of July 7, 2026, the Cottonwood fire in Utah burned more than 150 square miles [1]. NASA's Fire Events Data Suite (FEDS) was used to track its progression and rate of growth [2].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "cottonwood-fire-chars-utah-85587d33",
+          "examining-algal-blooms-in-blue-mesa-43f6338f",
+          "nasa-webb-uncovers-unusual-galaxy-shaped-by-cosmic-collision-90498e1a"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "cottonwood-fire-chars-utah-85587d33",
+          "examining-algal-blooms-in-blue-mesa-43f6338f",
+          "nasa-s-webb-reveals-stars-sparking-to-life-in-cosmic-celebra-a9ba8d68"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "As of July 7, 2026, the Cottonwood fire in Utah burned more than 150 square miles.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "NASA's Fire Events Data Suite (FEDS) was used to track the progression and rate of growth of the Cottonwood fire.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 2,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1074,
+          "completion_tokens": 67,
+          "total_tokens": 1141
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "The fire had burned 150 square miles (390 square kilometers)",
+            "present": true
+          },
+          {
+            "key_fact": "NASA's FEDS (Fire Events Data Suite) was used to track it",
+            "present": true
+          },
+          {
+            "key_fact": "FEDS uses VIIRS sensors aboard the Suomi NPP, NOAA-20, and NOAA-21 satellites",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.6666666666666666,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 197,
+          "completion_tokens": 10,
+          "total_tokens": 207
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 6352,
+        "completion_tokens": 291,
+        "total_tokens": 6643
+      },
+      "latency_ms": 37461.61604207009,
+      "error": null
+    },
+    {
+      "case_id": "eval-017",
+      "query": "What water-level and temperature thresholds were associated with harmful algal blooms at Blue Mesa Reservoir, according to USGS research?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "The USGS research identified that harmful algal blooms at Blue Mesa Reservoir were associated with low water levels and warm water temperatures, although specific numerical thresholds for these conditions are not provided in the sources. The research conducted during the summers of 2021 and 2022 highlighted the correlation between these factors and the occurrence of algal blooms during a severe drought in the region [1][2].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "examining-algal-blooms-in-blue-mesa-43f6338f",
+          "cottonwood-fire-chars-utah-85587d33"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "examining-algal-blooms-in-blue-mesa-43f6338f",
+          "cottonwood-fire-chars-utah-85587d33"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The USGS research identified harmful algal blooms at Blue Mesa Reservoir.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Harmful algal blooms at Blue Mesa Reservoir were associated with low water levels.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Harmful algal blooms at Blue Mesa Reservoir were associated with warm water temperatures.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Specific numerical thresholds for low water levels and warm water temperatures are not provided in the sources.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The research was conducted during the summers of 2021 and 2022.",
+            "verdict": "unsupported"
+          },
+          {
+            "claim": "There is a correlation between low water levels, warm water temperatures, and the occurrence of algal blooms during a severe drought in the region.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 0.8333333333333334,
+        "supported_count": 5,
+        "unsupported_count": 1,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1054,
+          "completion_tokens": 139,
+          "total_tokens": 1193
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Blooms were more common when water levels fell below 7,470 feet",
+            "present": false
+          },
+          {
+            "key_fact": "Blooms were more common when water temperatures rose above about 19.5\u00b0C (67.1\u00b0F)",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 210,
+          "completion_tokens": 8,
+          "total_tokens": 218
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5030,
+        "completion_tokens": 382,
+        "total_tokens": 5412
+      },
+      "latency_ms": 43994.745374890044,
+      "error": null
+    },
+    {
+      "case_id": "eval-018",
+      "query": "Which two companies were selected under NASA's Commercial Crew Transportation Capability (CCtCap) contract announced in September 2014?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "The sources provided do not contain information regarding the two companies selected under NASA's Commercial Crew Transportation Capability (CCtCap) contract announced in September 2014. Therefore, I cannot answer the question based on the provided sources.",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "the-nasa-commercial-crew-program-ccp-mission-assurance-proce-2f190ed1",
+          "nasa-s-capstone-completes-extended-mission-testing-lunar-tec-2b551e7f",
+          "nasa-seeks-industry-input-on-second-phase-of-commercial-spac-d7e3b1f4",
+          "safety-and-mission-assurance-a-nasa-perspective-3a5c998d"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "the-nasa-commercial-crew-program-ccp-mission-assurance-proce-2f190ed1",
+          "nasa-seeks-industry-input-on-second-phase-of-commercial-spac-d7e3b1f4",
+          "nasa-s-capstone-completes-extended-mission-testing-lunar-tec-2b551e7f",
+          "safety-and-mission-assurance-a-nasa-perspective-3a5c998d"
+        ]
+      },
+      "faithfulness": {
+        "claims": [],
+        "faithfulness": null,
+        "supported_count": 0,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 129,
+          "completion_tokens": 5,
+          "total_tokens": 134
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Boeing",
+            "present": false
+          },
+          {
+            "key_fact": "SpaceX",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 143,
+          "completion_tokens": 8,
+          "total_tokens": 151
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 17696,
+        "completion_tokens": 194,
+        "total_tokens": 17890
+      },
+      "latency_ms": 47038.208374986425,
+      "error": null
+    },
+    {
+      "case_id": "eval-019",
+      "query": "What were the call signs of the Apollo 10 command module and lunar module, and what was distinctive about them?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "The call signs of the Apollo 10 spacecraft were \"Charlie Brown\" for the command module and \"Snoopy\" for the lunar module. The distinctive aspect of these call signs was that they were chosen as playful references, with \"Charlie Brown\" being a character from the comic strip created by Charles M. Schulz, and \"Snoopy\" being his pet beagle [1].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "mission-report-apollo-10-aa9ccfab"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "mission-report-apollo-10-aa9ccfab"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The call sign of the Apollo 10 command module was 'Charlie Brown'.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The call sign of the Apollo 10 lunar module was 'Snoopy'.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "'Charlie Brown' is a character from the comic strip created by Charles M. Schulz.",
+            "verdict": "unsupported"
+          },
+          {
+            "claim": "Snoopy is the pet beagle of Charlie Brown.",
+            "verdict": "unsupported"
+          }
+        ],
+        "faithfulness": 0.5,
+        "supported_count": 2,
+        "unsupported_count": 2,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1005,
+          "completion_tokens": 87,
+          "total_tokens": 1092
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "The command module was called 'Charlie Brown'",
+            "present": true
+          },
+          {
+            "key_fact": "The lunar module was called 'Snoopy'",
+            "present": true
+          },
+          {
+            "key_fact": "Both were named after Peanuts comic strip characters",
+            "present": true
+          },
+          {
+            "key_fact": "Snoopy descended to within 8.4 nautical miles of the lunar surface",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.75,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 222,
+          "completion_tokens": 12,
+          "total_tokens": 234
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 4958,
+        "completion_tokens": 307,
+        "total_tokens": 5265
+      },
+      "latency_ms": 42591.37858287431,
+      "error": null
+    },
+    {
+      "case_id": "eval-020",
+      "query": "Who was the first American to orbit Earth, and how many orbits did he complete?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "The sources provided do not contain the answer to your question about who was the first American to orbit Earth and how many orbits he completed.",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "this-is-nasa-e92fdf8e",
+          "mission-report-apollo-10-aa9ccfab",
+          "the-1973-nasa-mission-model-0405bedf"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "this-is-nasa-e92fdf8e",
+          "mission-report-apollo-10-aa9ccfab",
+          "the-1973-nasa-mission-model-0405bedf"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The sources provided do not contain the answer to the question about who was the first American to orbit Earth.",
+            "verdict": "unsupported"
+          },
+          {
+            "claim": "The sources provided do not contain the answer to the question about how many orbits he completed.",
+            "verdict": "unsupported"
+          }
+        ],
+        "faithfulness": 0.0,
+        "supported_count": 0,
+        "unsupported_count": 2,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1265,
+          "completion_tokens": 59,
+          "total_tokens": 1324
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "John H. Glenn Jr. was the first American to orbit Earth",
+            "present": true
+          },
+          {
+            "key_fact": "He completed 3 orbits",
+            "present": true
+          },
+          {
+            "key_fact": "This happened February 20, 1962",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 154,
+          "completion_tokens": 10,
+          "total_tokens": 164
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 8942,
+        "completion_tokens": 183,
+        "total_tokens": 9125
+      },
+      "latency_ms": 45806.82316701859,
+      "error": null
+    },
+    {
+      "case_id": "eval-021",
+      "query": "How much did the rock that got stuck on Curiosity's drill in 2026 weigh, and how did the team eventually free it?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "The rock that got stuck on Curiosity's drill in 2026 weighed approximately 1.5 feet in diameter at its base and 6 inches thick, but the specific weight is not provided in the sources [3]. The team eventually freed the rock by repositioning the arm and using vibrations from the drill, successfully detaching it on May 1, 2026, after several days of attempts [3][4].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-curiosity-rover-frees-its-drill-from-a-rock-98365642",
+          "curiosity-blog-sols-4886-4892-ingenuity-and-perseverance-cur-b76a133a",
+          "nasa-s-curiosity-takes-close-look-at-rock-that-got-stuck-on-0f72ca80",
+          "curiosity-blog-sols-4900-4907-pasadena-we-have-a-drill-sampl-f6da741f",
+          "curiosity-blog-sols-4873-4878-welcome-to-the-atacama-drill-t-5b21e4b1"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-curiosity-rover-frees-its-drill-from-a-rock-98365642",
+          "nasa-s-curiosity-takes-close-look-at-rock-that-got-stuck-on-0f72ca80",
+          "curiosity-blog-sols-4886-4892-ingenuity-and-perseverance-cur-b76a133a",
+          "curiosity-blog-sols-4900-4907-pasadena-we-have-a-drill-sampl-f6da741f",
+          "curiosity-blog-sols-4873-4878-welcome-to-the-atacama-drill-t-5b21e4b1"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The rock that got stuck on Curiosity's drill in 2026 weighed approximately 1.5 feet in diameter at its base.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The rock that got stuck on Curiosity's drill in 2026 was 6 inches thick.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The specific weight of the rock is not provided in the sources.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The team freed the rock by repositioning the arm and using vibrations from the drill.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The rock was successfully detached on May 1, 2026, after several days of attempts.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 5,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1083,
+          "completion_tokens": 123,
+          "total_tokens": 1206
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "The rock weighed roughly 28.6 pounds (13 kilograms)",
+            "present": false
+          },
+          {
+            "key_fact": "The rock was freed on May 1, 2026, after an earlier failed attempt on April 29",
+            "present": true
+          },
+          {
+            "key_fact": "It was freed through reorientation of the arm and percussion/vibration of the drill",
+            "present": true
+          }
+        ],
+        "answer_completeness": 0.6666666666666666,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 235,
+          "completion_tokens": 10,
+          "total_tokens": 245
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5236,
+        "completion_tokens": 377,
+        "total_tokens": 5613
+      },
+      "latency_ms": 51242.002999875695,
+      "error": null
+    },
+    {
+      "case_id": "eval-022",
+      "query": "How do Webb's atmospheric findings compare between TRAPPIST-1 d and TRAPPIST-1 e?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "Webb's atmospheric findings for TRAPPIST-1 d indicate that there were no detections of common atmospheric molecules such as water, methane, or carbon dioxide, suggesting the planet might have an extremely thin atmosphere or none at all, similar to Mars [2]. In contrast, for TRAPPIST-1 e, while it is also uncertain if it has an atmosphere, researchers suggest it may lack a secondary atmosphere altogether, and they continue to explore various scenarios for its atmospheric conditions [5]. Overall, both planets face atmospheric uncertainty; however, TRAPPIST-1 d shows a clearer absence of detectable gases compared to the more ambiguous possibilities for TRAPPIST-1 e.",
+      "retrieval": {
+        "precision_at_k": 0.4,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "webb-narrows-atmospheric-possibilities-for-earth-sized-exopl-bded4cf6",
+          "nasa-webb-looks-at-earth-sized-habitable-zone-exoplanet-trap-5a993473"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.4,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-webb-looks-at-earth-sized-habitable-zone-exoplanet-trap-5a993473",
+          "webb-narrows-atmospheric-possibilities-for-earth-sized-exopl-bded4cf6"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "Webb's atmospheric findings for TRAPPIST-1 d indicate that there were no detections of common atmospheric molecules such as water, methane, or carbon dioxide.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "TRAPPIST-1 d might have an extremely thin atmosphere or none at all, similar to Mars.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "For TRAPPIST-1 e, it is uncertain if it has an atmosphere.",
+            "verdict": "unsupported"
+          },
+          {
+            "claim": "Researchers suggest TRAPPIST-1 e may lack a secondary atmosphere altogether.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Researchers continue to explore various scenarios for TRAPPIST-1 e's atmospheric conditions.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Both TRAPPIST-1 d and TRAPPIST-1 e face atmospheric uncertainty.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "TRAPPIST-1 d shows a clearer absence of detectable gases compared to TRAPPIST-1 e.",
+            "verdict": "unsupported"
+          }
+        ],
+        "faithfulness": 0.7142857142857143,
+        "supported_count": 5,
+        "unsupported_count": 2,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1162,
+          "completion_tokens": 184,
+          "total_tokens": 1346
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "For TRAPPIST-1 d, Webb ruled out water, methane, and CO2, ruling out an Earth-like atmosphere",
+            "present": true
+          },
+          {
+            "key_fact": "For TRAPPIST-1 e, researchers believe any primary hydrogen-helium atmosphere was stripped by stellar radiation, and a secondary atmosphere is still uncertain",
+            "present": true
+          },
+          {
+            "key_fact": "Neither planet has a confirmed atmosphere yet",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 302,
+          "completion_tokens": 10,
+          "total_tokens": 312
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5357,
+        "completion_tokens": 799,
+        "total_tokens": 6156
+      },
+      "latency_ms": 56684.319709194824,
+      "error": null
+    },
+    {
+      "case_id": "eval-023",
+      "query": "What was distinctive about the December 10, 2025 Perseverance rover drive along the Jezero Crater rim, and how was it visualized?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "both",
+      "route_correct": false,
+      "answer": "On December 10, 2025, the Perseverance rover made a distinctive drive of 807 feet (246 meters) along the rim of Jezero Crater, which was notable because it was visualized in a detailed animation that combined data from 53 Navigation Camera (Navcam) image pairs along with rover orientation, wheel speed, steering angle, and Inertial Measurement Unit data. This visualization created a 3D virtual environment that showcased the rover's journey over the course of two hours and 35 minutes, allowing for an understanding of its autonomous decision-making process during the drive [1][2].",
+      "retrieval": {
+        "precision_at_k": 0.4,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "video-perseverance-rover-s-view-of-crater-rim-drive-8d70774f",
+          "visualizing-perseverance-s-ai-planned-drive-on-mars-f88f9fd7",
+          "nasa-s-hirise-captures-perseverance-marking-a-milestone-on-m-e4e758ca",
+          "nasa-s-perseverance-mars-rover-surveys-crocodile-bridge-ec88ef4a",
+          "nasa-s-perseverance-captures-panorama-at-arbot-7c110877"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.4,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "video-perseverance-rover-s-view-of-crater-rim-drive-8d70774f",
+          "nasa-s-hirise-captures-perseverance-marking-a-milestone-on-m-e4e758ca",
+          "nasa-s-perseverance-mars-rover-surveys-crocodile-bridge-ec88ef4a",
+          "visualizing-perseverance-s-ai-planned-drive-on-mars-f88f9fd7",
+          "nasa-s-perseverance-captures-panorama-at-arbot-7c110877"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "On December 10, 2025, the Perseverance rover made a drive of 807 feet (246 meters) along the rim of Jezero Crater.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The drive of the Perseverance rover was visualized in a detailed animation.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The animation combined data from 53 Navigation Camera (Navcam) image pairs.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The animation included data on rover orientation, wheel speed, steering angle, and Inertial Measurement Unit data.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The visualization created a 3D virtual environment that showcased the rover's journey over the course of two hours and 35 minutes.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The visualization allowed for an understanding of the rover's autonomous decision-making process during the drive.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 6,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1213,
+          "completion_tokens": 161,
+          "total_tokens": 1374
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "The drive covered 807 feet (246 meters) along the crater rim on sol 1,709",
+            "present": true
+          },
+          {
+            "key_fact": "Generative AI provided the route planning for this drive",
+            "present": false
+          },
+          {
+            "key_fact": "One reconstruction used Navcam image pairs in a 3D environment; another used the 'Caspian' visualization tool",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.3333333333333333,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 277,
+          "completion_tokens": 10,
+          "total_tokens": 287
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5719,
+        "completion_tokens": 634,
+        "total_tokens": 6353
+      },
+      "latency_ms": 57110.25108280592,
+      "error": null
+    },
+    {
+      "case_id": "eval-024",
+      "query": "What evidence has Webb found for supermassive black holes forming very early in the universe, across different 'little red dot' galaxies?",
+      "category": "retrieval",
+      "expected_route": "retrieval",
+      "actual_route": "retrieval",
+      "route_correct": true,
+      "answer": "Webb has found evidence for supermassive black holes forming very early in the universe, particularly in 'little red dot' galaxies, by identifying a black hole mass within the first billion years after the Big Bang. For instance, the black hole QSO1, located in the galaxy environment with a metallicity less than 0.5% of the Sun, provides a direct measurement consistent with previous findings, suggesting that these early black holes could indeed be more common than previously thought [2][3]. Furthermore, Webb's observations of another little red dot, such as GLIMPSE-17775, revealed significant detail about its properties due to gravitational lensing, allowing for enhanced spectral analysis [1][5].",
+      "retrieval": {
+        "precision_at_k": 0.4,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-webb-finds-strongest-evidence-yet-for-black-hole-stars-11eae9e1",
+          "nasa-s-webb-reveals-black-hole-that-formed-before-its-galaxy-90f28c32"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.4,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-webb-finds-strongest-evidence-yet-for-black-hole-stars-11eae9e1",
+          "nasa-s-webb-reveals-black-hole-that-formed-before-its-galaxy-90f28c32"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "Webb has found evidence for supermassive black holes forming very early in the universe.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Supermassive black holes are particularly found in 'little red dot' galaxies.",
+            "verdict": "unsupported"
+          },
+          {
+            "claim": "A black hole mass has been identified within the first billion years after the Big Bang.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The black hole QSO1 is located in a galaxy environment with a metallicity less than 0.5% of the Sun.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The measurement of black hole QSO1 is consistent with previous findings.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Early black holes could be more common than previously thought.",
+            "verdict": "unsupported"
+          },
+          {
+            "claim": "Webb's observations of GLIMPSE-17775 revealed significant detail about its properties due to gravitational lensing.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Gravitational lensing allows for enhanced spectral analysis.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 0.75,
+        "supported_count": 6,
+        "unsupported_count": 2,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1155,
+          "completion_tokens": 192,
+          "total_tokens": 1347
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "QSO1 existed just 700 million years after the Big Bang, with a black hole mass of about 50 million solar masses measured via Keplerian gas motion",
+            "present": false
+          },
+          {
+            "key_fact": "GLIMPSE-17775 existed about 1.8 billion years after the Big Bang; a deep 30-hour spectrum revealed an 'iron forest' supporting the 'black hole star' model",
+            "present": false
+          },
+          {
+            "key_fact": "Both are examples of gravitationally lensed 'little red dot' galaxies",
+            "present": true
+          }
+        ],
+        "answer_completeness": 0.3333333333333333,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 328,
+          "completion_tokens": 10,
+          "total_tokens": 338
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5394,
+        "completion_tokens": 768,
+        "total_tokens": 6162
+      },
+      "latency_ms": 60889.04095790349,
+      "error": null
+    },
+    {
+      "case_id": "eval-025",
+      "query": "Where is the ISS right now?",
+      "category": "tools",
+      "expected_route": "tools",
+      "actual_route": "tools",
+      "route_correct": true,
+      "answer": "The ISS is currently located at approximately 17.14\u00b0S latitude and 45.80\u00b0E longitude [1].",
+      "retrieval": null,
+      "retrieval_rerank_off": null,
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The ISS is currently located at approximately 17.14\u00b0S latitude.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The ISS is currently located at approximately 45.80\u00b0E longitude.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 2,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 314,
+          "completion_tokens": 45,
+          "total_tokens": 359
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Reports a current latitude and longitude for the ISS",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 127,
+          "completion_tokens": 6,
+          "total_tokens": 133
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 2384,
+        "completion_tokens": 116,
+        "total_tokens": 2500
+      },
+      "latency_ms": 56890.88041707873,
+      "error": null
+    },
+    {
+      "case_id": "eval-026",
+      "query": "What is today's astronomy picture of the day?",
+      "category": "tools",
+      "expected_route": "tools",
+      "actual_route": "tools",
+      "route_correct": true,
+      "answer": "No sources were found for the information regarding today's astronomy picture of the day.",
+      "retrieval": null,
+      "retrieval_rerank_off": null,
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "No sources were found for the information regarding today's astronomy picture of the day.",
+            "verdict": "unsupported"
+          }
+        ],
+        "faithfulness": 0.0,
+        "supported_count": 0,
+        "unsupported_count": 1,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 237,
+          "completion_tokens": 29,
+          "total_tokens": 266
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Reports a title, image/video, and explanation for a specific date's APOD",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 123,
+          "completion_tokens": 6,
+          "total_tokens": 129
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 2288,
+        "completion_tokens": 92,
+        "total_tokens": 2380
+      },
+      "latency_ms": 64767.69045810215,
+      "error": null
+    },
+    {
+      "case_id": "eval-027",
+      "query": "Show me the most recent photos from the Curiosity rover.",
+      "category": "tools",
+      "expected_route": "tools",
+      "actual_route": "tools",
+      "route_correct": true,
+      "answer": "No sources were found to provide recent photos from the Curiosity rover.",
+      "retrieval": null,
+      "retrieval_rerank_off": null,
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "No sources were found to provide recent photos from the Curiosity rover.",
+            "verdict": "unsupported"
+          }
+        ],
+        "faithfulness": 0.0,
+        "supported_count": 0,
+        "unsupported_count": 1,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 235,
+          "completion_tokens": 29,
+          "total_tokens": 264
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Reports one or more Mars rover photos with camera name and Earth date, attributed to Curiosity",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 124,
+          "completion_tokens": 5,
+          "total_tokens": 129
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 2340,
+        "completion_tokens": 106,
+        "total_tokens": 2446
+      },
+      "latency_ms": 61987.171582877636,
+      "error": null
+    },
+    {
+      "case_id": "eval-028",
+      "query": "Show me a JWST image of the Carina Nebula.",
+      "category": "tools",
+      "expected_route": "tools",
+      "actual_route": "tools",
+      "route_correct": true,
+      "answer": "You can see a JWST image of the Carina Nebula, specifically of the star-forming region called NGC 3324, in the second source listed. It mentions the image was part of the first full-color images released by NASA on July 12, 2022 [1]. You can find the image here: ![JWST Carina Nebula](https://images-assets.nasa.gov/image/NHQ202207120021/NHQ202207120021~thumb.jpg) [1].",
+      "retrieval": null,
+      "retrieval_rerank_off": null,
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "A JWST image of the Carina Nebula exists.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The image specifically depicts the star-forming region called NGC 3324.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The image was part of the first full-color images released by NASA on July 12, 2022.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The image can be found at the provided URL.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 4,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 947,
+          "completion_tokens": 83,
+          "total_tokens": 1030
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Reports one or more JWST-related images/media with a title and description mentioning the Carina Nebula",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 216,
+          "completion_tokens": 5,
+          "total_tokens": 221
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 4186,
+        "completion_tokens": 598,
+        "total_tokens": 4784
+      },
+      "latency_ms": 66476.87179106288,
+      "error": null
+    },
+    {
+      "case_id": "eval-029",
+      "query": "What's the current latitude and longitude of the International Space Station?",
+      "category": "tools",
+      "expected_route": "tools",
+      "actual_route": "tools",
+      "route_correct": true,
+      "answer": "The current latitude and longitude of the International Space Station are approximately 17.65\u00b0S and 46.22\u00b0E, respectively [1].",
+      "retrieval": null,
+      "retrieval_rerank_off": null,
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The current latitude of the International Space Station is approximately 17.65\u00b0S.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The current longitude of the International Space Station is approximately 46.22\u00b0E.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 2,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 323,
+          "completion_tokens": 49,
+          "total_tokens": 372
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Reports a current latitude and longitude for the ISS",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 132,
+          "completion_tokens": 5,
+          "total_tokens": 137
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 2412,
+        "completion_tokens": 122,
+        "total_tokens": 2534
+      },
+      "latency_ms": 67060.73004193604,
+      "error": null
+    },
+    {
+      "case_id": "eval-030",
+      "query": "Get me NASA's astronomy picture of the day for July 1, 2026.",
+      "category": "tools",
+      "expected_route": "tools",
+      "actual_route": "tools",
+      "route_correct": true,
+      "answer": "NASA's astronomy picture of the day for July 1, 2026, is titled \"The Cotton Candy Clouds of Rho Ophiuchi.\" The image features the Rho Ophiuchi complex, which is a star-forming region with a colorful cloud complex that contains young stellar objects. The image showcases various astronomical phenomena, including a blue reflection nebula, a red emission nebula, and the red supergiant star Antares. It also highlights the presence of dark interstellar dust and recent observations by the JWST. The image can be found [here](https://apod.nasa.gov/apod/image/2607/rho_ophiuchi_800.jpg) [1].",
+      "retrieval": null,
+      "retrieval_rerank_off": null,
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "NASA's astronomy picture of the day for July 1, 2026, is titled 'The Cotton Candy Clouds of Rho Ophiuchi.'",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The Rho Ophiuchi complex is a star-forming region.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The Rho Ophiuchi complex contains young stellar objects.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The image showcases a blue reflection nebula.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The image showcases a red emission nebula.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The image showcases the red supergiant star Antares.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The image highlights the presence of dark interstellar dust.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The image includes recent observations by the JWST.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The image can be found at the provided URL.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 9,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 759,
+          "completion_tokens": 156,
+          "total_tokens": 915
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Reports the APOD specifically for 2026-07-01, including title and explanation",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 251,
+          "completion_tokens": 5,
+          "total_tokens": 256
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 3461,
+        "completion_tokens": 568,
+        "total_tokens": 4029
+      },
+      "latency_ms": 71739.55379193649,
+      "error": null
+    },
+    {
+      "case_id": "eval-031",
+      "query": "Show me Perseverance rover photos from Mars.",
+      "category": "tools",
+      "expected_route": "tools",
+      "actual_route": "tools",
+      "route_correct": true,
+      "answer": "No sources were found for this question. Therefore, I cannot provide Perseverance rover photos from Mars.",
+      "retrieval": null,
+      "retrieval_rerank_off": null,
+      "faithfulness": {
+        "claims": [],
+        "faithfulness": null,
+        "supported_count": 0,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 105,
+          "completion_tokens": 5,
+          "total_tokens": 110
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Reports one or more Mars rover photos attributed to Perseverance",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 125,
+          "completion_tokens": 5,
+          "total_tokens": 130
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 2209,
+        "completion_tokens": 100,
+        "total_tokens": 2309
+      },
+      "latency_ms": 69589.14945879951,
+      "error": null
+    },
+    {
+      "case_id": "eval-032",
+      "query": "Find me JWST pictures related to exoplanets.",
+      "category": "tools",
+      "expected_route": "tools",
+      "actual_route": "tools",
+      "route_correct": true,
+      "answer": "Here are some JWST pictures related to exoplanets:\n\n1. **JWST\u2019s First Full-Color Images**: This image features NASA James Webb Space Telescope Deputy Project Scientist for Exoplanet Science Knicole Col\u00f3n discussing the measurements of the exoplanet WASP-96 b. ![Image 1](https://images-assets.nasa.gov/image/NHQ202207120015/NHQ202207120015~thumb.jpg) [1]\n\n2. **Another Perspective on JWST\u2019s First Full-Color Images**: This is another image from the same event where Knicole Col\u00f3n speaks about WASP-96 b. ![Image 2](https://images-assets.nasa.gov/image/NHQ202207120018/NHQ202207120018~thumb.jpg) [1]\n\n3. **JWST\u2019s First Full-Color Images Media Briefing**: This image depicts a media briefing where exoplanet science was discussed, highlighting the importance of the images related to exoplanets. ![Image 3](https://images-assets.nasa.gov/image/NHQ202207120033/NHQ202207120033~thumb.jpg) [1]\n\nThe other images from the sources listed do not specifically relate to exoplanets.",
+      "retrieval": null,
+      "retrieval_rerank_off": null,
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "JWST has produced full-color images related to exoplanets.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Knicole Col\u00f3n is the Deputy Project Scientist for Exoplanet Science at NASA's James Webb Space Telescope.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "WASP-96 b is an exoplanet that has been discussed in relation to JWST's images.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "A media briefing was held where exoplanet science was discussed in relation to JWST's images.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 4,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1281,
+          "completion_tokens": 101,
+          "total_tokens": 1382
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Reports one or more JWST-related images/media whose titles or descriptions relate to exoplanets",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 363,
+          "completion_tokens": 6,
+          "total_tokens": 369
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 4999,
+        "completion_tokens": 858,
+        "total_tokens": 5857
+      },
+      "latency_ms": 79031.16404195316,
+      "error": null
+    },
+    {
+      "case_id": "eval-033",
+      "query": "Show me a JWST image of a supernova, and explain what Webb discovered about the star that exploded as supernova 2025pht.",
+      "category": "both",
+      "expected_route": "both",
+      "actual_route": "both",
+      "route_correct": true,
+      "answer": "I cannot provide a JWST image of supernova 2025pht as the sources do not include any images. However, I can summarize what Webb discovered about the star that exploded as supernova 2025pht. \n\nThe James Webb Space Telescope (JWST) located the former red supergiant star that exploded as supernova 2025pht, revealing that it was not visible in pre-explosion images from Hubble due to its high level of dust, which dimmed its light significantly. This supports the hypothesis that the most massive aging stars can be obscured by surrounding dust, making them difficult to detect before they explode. NASA noted that the degree of obscuration observed in the case of supernova 2025pht was more extreme than expected [2][3].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-telescope-locates-former-star-that-exploded-as-s-a589d9f6",
+          "nasa-s-webb-observes-exoplanet-whose-composition-defies-expl-6b567cba"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-telescope-locates-former-star-that-exploded-as-s-a589d9f6",
+          "nasa-s-webb-observes-exoplanet-whose-composition-defies-expl-6b567cba",
+          "nasa-s-hubble-captures-crimson-cloud-sparkling-with-white-bl-89e60386"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The James Webb Space Telescope (JWST) located the former red supergiant star that exploded as supernova 2025pht.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Supernova 2025pht was not visible in pre-explosion images from Hubble due to its high level of dust.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The dust surrounding supernova 2025pht significantly dimmed its light.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The most massive aging stars can be obscured by surrounding dust, making them difficult to detect before they explode.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "NASA noted that the degree of obscuration observed in the case of supernova 2025pht was more extreme than expected.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 5,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1336,
+          "completion_tokens": 144,
+          "total_tokens": 1480
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Reports a JWST-related image/media result for a supernova",
+            "present": false
+          },
+          {
+            "key_fact": "Explains that Webb's pre-existing 2024 images identified the progenitor as an unusually red, dusty red supergiant star",
+            "present": true
+          },
+          {
+            "key_fact": "Notes this was the first published Webb detection of a supernova progenitor",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.3333333333333333,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 312,
+          "completion_tokens": 10,
+          "total_tokens": 322
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5968,
+        "completion_tokens": 699,
+        "total_tokens": 6667
+      },
+      "latency_ms": 79231.06454196386,
+      "error": null
+    },
+    {
+      "case_id": "eval-034",
+      "query": "Show me the most recent Perseverance rover photos, and tell me about the technology that helps Perseverance figure out its own location on Mars.",
+      "category": "both",
+      "expected_route": "both",
+      "actual_route": "both",
+      "route_correct": true,
+      "answer": "The most recent photos from the Perseverance rover include a 360-degree panorama captured on February 2, 2026, during the rover's 1,762nd day (sol) on Mars. These images were taken using its navigation cameras and represent the first successful use of a technology called Mars Global Localization, which enables the rover to determine its location autonomously by matching its images with orbital imagery from the Mars Reconnaissance Orbiter [1][3].\n\nMars Global Localization works by allowing Perseverance to take a panoramic view of its surroundings and compare it to existing orbital images. This process enables it to pinpoint its location on Mars without waiting for instructions from Earth, which previously took a day or more after sending back images and receiving coordinates [2][3].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "perseverance-pinpoints-its-location-at-mala-mala-d1746f76",
+          "mars-global-localization-pinpoints-perseverance-s-location-cf260dea",
+          "nasa-s-hirise-captures-perseverance-marking-a-milestone-on-m-e4e758ca",
+          "visualizing-perseverance-s-ai-planned-drive-on-mars-f88f9fd7"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "retrieved_doc_ids": [
+          "mars-global-localization-pinpoints-perseverance-s-location-cf260dea",
+          "perseverance-pinpoints-its-location-at-mala-mala-d1746f76",
+          "nasa-s-hirise-captures-perseverance-marking-a-milestone-on-m-e4e758ca",
+          "visualizing-perseverance-s-ai-planned-drive-on-mars-f88f9fd7"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The most recent photos from the Perseverance rover include a 360-degree panorama captured on February 2, 2026.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The 360-degree panorama was captured during the rover's 1,762nd day (sol) on Mars.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The images were taken using the rover's navigation cameras.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The images represent the first successful use of a technology called Mars Global Localization.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Mars Global Localization enables the rover to determine its location autonomously by matching its images with orbital imagery from the Mars Reconnaissance Orbiter.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Mars Global Localization allows Perseverance to take a panoramic view of its surroundings and compare it to existing orbital images.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The process of Mars Global Localization enables the rover to pinpoint its location on Mars without waiting for instructions from Earth.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "Previously, it took a day or more for the rover to receive coordinates after sending back images.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 1.0,
+        "supported_count": 8,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1214,
+          "completion_tokens": 204,
+          "total_tokens": 1418
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Reports one or more recent Perseverance photos",
+            "present": true
+          },
+          {
+            "key_fact": "Explains Mars Global Localization: determines location to within about 10 inches (25 cm) in about two minutes",
+            "present": false
+          }
+        ],
+        "answer_completeness": 0.5,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 282,
+          "completion_tokens": 8,
+          "total_tokens": 290
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5510,
+        "completion_tokens": 780,
+        "total_tokens": 6290
+      },
+      "latency_ms": 82051.51762487367,
+      "error": null
+    },
+    {
+      "case_id": "eval-035",
+      "query": "What is today's astronomy picture of the day, and has Webb studied any exoplanets with extreme temperature swings like HD 80606 b?",
+      "category": "both",
+      "expected_route": "both",
+      "actual_route": "both",
+      "route_correct": true,
+      "answer": "Today's astronomy picture of the day features observations from NASA's James Webb Space Telescope regarding the exoplanet HD 80606 b. This exoplanet has an extremely elliptical orbit that causes significant temperature swings, particularly as it approaches its host star during periastron [1][2][3]. The research team has only begun to analyze the data, which shows the extreme conditions HD 80606 b experiences [2].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-catches-exoplanet-getting-roasted-fe3b3711",
+          "nasa-s-webb-studies-how-planet-survived-death-of-its-star-6d2dbe6d",
+          "nasa-s-webb-detects-thick-atmosphere-around-broiling-lava-wo-f136b5df"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-s-webb-catches-exoplanet-getting-roasted-fe3b3711",
+          "nasa-s-webb-studies-how-planet-survived-death-of-its-star-6d2dbe6d",
+          "nasa-s-webb-detects-thick-atmosphere-around-broiling-lava-wo-f136b5df"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "Today's astronomy picture of the day features observations from NASA's James Webb Space Telescope.",
+            "verdict": "unsupported"
+          },
+          {
+            "claim": "The exoplanet HD 80606 b has an extremely elliptical orbit.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "HD 80606 b experiences significant temperature swings as it approaches its host star during periastron.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The research team has only begun to analyze the data regarding HD 80606 b.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "The data shows the extreme conditions HD 80606 b experiences.",
+            "verdict": "supported"
+          }
+        ],
+        "faithfulness": 0.8,
+        "supported_count": 4,
+        "unsupported_count": 1,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 986,
+          "completion_tokens": 107,
+          "total_tokens": 1093
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Reports today's APOD (title, explanation)",
+            "present": true
+          },
+          {
+            "key_fact": "Explains that Webb observed HD 80606 b's temperature spike by about 1,100\u00b0F near periastron",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 212,
+          "completion_tokens": 8,
+          "total_tokens": 220
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5082,
+        "completion_tokens": 441,
+        "total_tokens": 5523
+      },
+      "latency_ms": 82899.44562502205,
+      "error": null
+    },
+    {
+      "case_id": "eval-036",
+      "query": "Where is the ISS right now, and what has NASA said about future commercial space stations replacing it?",
+      "category": "both",
+      "expected_route": "both",
+      "actual_route": "both",
+      "route_correct": true,
+      "answer": "The current position of the International Space Station (ISS) is approximately 18.56\u00b0S latitude and 46.96\u00b0E longitude [6]. Regarding future commercial space stations, NASA has announced a draft Request for Proposals (RFP) to seek feedback from American companies as part of its strategy to ensure a smooth transition of activities in low Earth orbit from the ISS to commercial space stations. This reflects the belief within the industry that they can meet the necessary timelines and that a viable commercial marketplace exists, with NASA intending to be one of the customers in this new ecosystem [1].",
+      "retrieval": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-seeks-industry-input-on-second-phase-of-commercial-spac-d7e3b1f4",
+          "the-nasa-commercial-crew-program-ccp-mission-assurance-proce-2f190ed1",
+          "safety-and-mission-assurance-a-nasa-perspective-3a5c998d",
+          "the-1973-nasa-mission-model-0405bedf",
+          "this-is-nasa-e92fdf8e"
+        ]
+      },
+      "retrieval_rerank_off": {
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "retrieved_doc_ids": [
+          "nasa-seeks-industry-input-on-second-phase-of-commercial-spac-d7e3b1f4",
+          "the-nasa-commercial-crew-program-ccp-mission-assurance-proce-2f190ed1",
+          "safety-and-mission-assurance-a-nasa-perspective-3a5c998d",
+          "the-1973-nasa-mission-model-0405bedf",
+          "this-is-nasa-e92fdf8e"
+        ]
+      },
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "The current position of the International Space Station (ISS) is approximately 18.56\u00b0S latitude and 46.96\u00b0E longitude.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "NASA has announced a draft Request for Proposals (RFP) to seek feedback from American companies.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "NASA's strategy aims to ensure a smooth transition of activities in low Earth orbit from the ISS to commercial space stations.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "There is a belief within the industry that they can meet the necessary timelines for commercial space stations.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "A viable commercial marketplace for space stations exists.",
+            "verdict": "supported"
+          },
+          {
+            "claim": "NASA intends to be one of the customers in the new commercial space station ecosystem.",
+            "verdict": "unsupported"
+          }
+        ],
+        "faithfulness": 0.8333333333333334,
+        "supported_count": 5,
+        "unsupported_count": 1,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 1063,
+          "completion_tokens": 145,
+          "total_tokens": 1208
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "Reports a current latitude and longitude for the ISS",
+            "present": true
+          },
+          {
+            "key_fact": "Mentions NASA's draft RFP for the next phase of its commercial space stations strategy, transitioning activities from the ISS",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 246,
+          "completion_tokens": 8,
+          "total_tokens": 254
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 5010,
+        "completion_tokens": 496,
+        "total_tokens": 5506
+      },
+      "latency_ms": 89040.40049994364,
+      "error": null
+    },
+    {
+      "case_id": "eval-037",
+      "query": "What's the best pizza topping?",
+      "category": "out_of_scope",
+      "expected_route": "direct",
+      "actual_route": "direct",
+      "route_correct": true,
+      "answer": "No sources were found for this question, so I cannot provide an answer.",
+      "retrieval": null,
+      "retrieval_rerank_off": null,
+      "faithfulness": {
+        "claims": [],
+        "faithfulness": null,
+        "supported_count": 0,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 99,
+          "completion_tokens": 5,
+          "total_tokens": 104
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "declines to answer / states no grounds",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 114,
+          "completion_tokens": 6,
+          "total_tokens": 120
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 1146,
+        "completion_tokens": 35,
+        "total_tokens": 1181
+      },
+      "latency_ms": 81418.05033292621,
+      "error": null
+    },
+    {
+      "case_id": "eval-038",
+      "query": "hey",
+      "category": "out_of_scope",
+      "expected_route": "direct",
+      "actual_route": "direct",
+      "route_correct": true,
+      "answer": "It looks like there are no sources available to answer your question.",
+      "retrieval": null,
+      "retrieval_rerank_off": null,
+      "faithfulness": {
+        "claims": [],
+        "faithfulness": null,
+        "supported_count": 0,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 97,
+          "completion_tokens": 5,
+          "total_tokens": 102
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "declines to answer / states no grounds",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 112,
+          "completion_tokens": 5,
+          "total_tokens": 117
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 1133,
+        "completion_tokens": 33,
+        "total_tokens": 1166
+      },
+      "latency_ms": 84277.90954220109,
+      "error": null
+    },
+    {
+      "case_id": "eval-039",
+      "query": "Can you help me plan a birthday party?",
+      "category": "out_of_scope",
+      "expected_route": "direct",
+      "actual_route": "direct",
+      "route_correct": true,
+      "answer": "I couldn't find any sources to help with planning a birthday party. If you have specific ideas or themes in mind, feel free to share, and I can help you brainstorm!",
+      "retrieval": null,
+      "retrieval_rerank_off": null,
+      "faithfulness": {
+        "claims": [],
+        "faithfulness": null,
+        "supported_count": 0,
+        "unsupported_count": 0,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 120,
+          "completion_tokens": 5,
+          "total_tokens": 125
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "declines to answer / states no grounds",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 135,
+          "completion_tokens": 6,
+          "total_tokens": 141
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 1194,
+        "completion_tokens": 62,
+        "total_tokens": 1256
+      },
+      "latency_ms": 84700.7106251549,
+      "error": null
+    },
+    {
+      "case_id": "eval-040",
+      "query": "What's the capital of France?",
+      "category": "out_of_scope",
+      "expected_route": "direct",
+      "actual_route": "direct",
+      "route_correct": true,
+      "answer": "No sources were found that provide the answer to the question about the capital of France.",
+      "retrieval": null,
+      "retrieval_rerank_off": null,
+      "faithfulness": {
+        "claims": [
+          {
+            "claim": "No sources were found that provide the answer to the question about the capital of France.",
+            "verdict": "unsupported"
+          }
+        ],
+        "faithfulness": 0.0,
+        "supported_count": 0,
+        "unsupported_count": 1,
+        "contradicted_count": 0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 241,
+          "completion_tokens": 32,
+          "total_tokens": 273
+        }
+      },
+      "key_facts_result": {
+        "judgements": [
+          {
+            "key_fact": "declines to answer / states no grounds",
+            "present": true
+          }
+        ],
+        "answer_completeness": 1.0,
+        "judge_error": false,
+        "error": null,
+        "token_usage": {
+          "prompt_tokens": 116,
+          "completion_tokens": 6,
+          "total_tokens": 122
+        }
+      },
+      "token_usage": {
+        "prompt_tokens": 1290,
+        "completion_tokens": 64,
+        "total_tokens": 1354
+      },
+      "latency_ms": 85883.39429209009,
+      "error": null
+    }
+  ]
+}

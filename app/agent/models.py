@@ -32,6 +32,19 @@ class TokenUsage(BaseModel):
     total_tokens: int = 0
 
 
+def accumulate_usage(token_usage: TokenUsage, usage) -> None:
+    """Add an OpenAI response's `.usage` onto a running TokenUsage total.
+
+    Shared by the agent loop, the composer, and the Phase 7 eval harness's
+    judge calls, so every code path that spends tokens accumulates the same way.
+    """
+    if usage is None:
+        return
+    token_usage.prompt_tokens += usage.prompt_tokens or 0
+    token_usage.completion_tokens += usage.completion_tokens or 0
+    token_usage.total_tokens += usage.total_tokens or 0
+
+
 class AgentTrace(BaseModel):
     query: str
     route: Route

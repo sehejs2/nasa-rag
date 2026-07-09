@@ -54,13 +54,18 @@ def _body_for_source(source: Source, trace: AgentTrace) -> str:
     return json.dumps(record.result_data)
 
 
-def build_composition_messages(query: str, trace: AgentTrace, sources: list[Source]) -> list[dict]:
-    if sources:
-        blocks = [f"[{s.number}] {s.title} — {_body_for_source(s, trace)}" for s in sources]
-        sources_text = "\n\n".join(blocks)
-    else:
-        sources_text = "(no sources were found for this question)"
+def render_sources_block(sources: list[Source], trace: AgentTrace) -> str:
+    """The numbered '[n] title — body' text block shared by composition and
+    (Phase 7) faithfulness judging, so both see the exact same source content.
+    """
+    if not sources:
+        return "(no sources were found for this question)"
+    blocks = [f"[{s.number}] {s.title} — {_body_for_source(s, trace)}" for s in sources]
+    return "\n\n".join(blocks)
 
+
+def build_composition_messages(query: str, trace: AgentTrace, sources: list[Source]) -> list[dict]:
+    sources_text = render_sources_block(sources, trace)
     user_content = f"Question: {query}\n\nSources:\n{sources_text}\n\n{COMPOSITION_INSTRUCTIONS}"
     return [{"role": "user", "content": user_content}]
 

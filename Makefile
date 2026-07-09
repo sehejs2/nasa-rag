@@ -1,4 +1,4 @@
-.PHONY: dev test lint db-up db-down db-init corpus chunk ingest search tool ask chat
+.PHONY: dev test lint db-up db-down db-init corpus chunk ingest search tool ask chat eval
 
 dev:
 	uv run uvicorn app.main:app --reload
@@ -38,3 +38,6 @@ ask:
 
 chat:
 	uv run python scripts/chat_client.py "$(q)"
+
+eval:
+	uv run python scripts/run_eval.py $(args)

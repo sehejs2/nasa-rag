@@ -1,0 +1,550 @@
+[
+  {
+    "id": "eval-001",
+    "query": "By how many degrees Fahrenheit did Webb observe the temperature of exoplanet HD 80606 b spike as it swept close to its star?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-s-webb-catches-exoplanet-getting-roasted-fe3b3711"
+    ],
+    "key_facts": [
+      "Temperature increased by about 1,100 degrees Fahrenheit",
+      "Observed with Webb's MIRI instrument",
+      "Happened near periastron (closest approach to its star)"
+    ],
+    "notes": "Easy, single-fact retrieval from a JWST exoplanet press release."
+  },
+  {
+    "id": "eval-002",
+    "query": "Approximately how many individual stars did Webb's imaging survey resolve within the M82 Cigar Galaxy?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-s-webb-pinpoints-millions-of-stars-within-cigar-galaxy-92176d97"
+    ],
+    "key_facts": [
+      "About 16.5 million individual stars resolved",
+      "Survey used 65 total hours of NIRCam observation time",
+      "M82 is 12 million light-years away"
+    ],
+    "notes": "Easy, single distinctive number."
+  },
+  {
+    "id": "eval-003",
+    "query": "What is unusual about the atmosphere of exoplanet PSR J2322-2650b, which orbits a pulsar?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-s-webb-observes-exoplanet-whose-composition-defies-expl-6b567cba"
+    ],
+    "key_facts": [
+      "Atmosphere is dominated by helium and carbon, unlike any seen before",
+      "It is the only known exoplanet with detectable molecular carbon",
+      "It is the only gas-giant-like planet known orbiting a pulsar"
+    ],
+    "notes": "Hard: requires synthesizing several distinctive claims from one article, not just one number."
+  },
+  {
+    "id": "eval-004",
+    "query": "What evidence suggests exoplanet 29 Cygni b formed like a planet rather than a star?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-s-webb-redefines-dividing-line-between-planets-stars-c4450d50"
+    ],
+    "key_facts": [
+      "Ground-based CHARA interferometer found the planet's orbit is aligned with its star's spin",
+      "That alignment indicates formation via disk accretion, not gas fragmentation",
+      "The planet is enriched in heavy elements equivalent to about 150 Earths' worth of metals"
+    ],
+    "notes": "Hard: the key evidence is a specific interferometry finding, easy to miss or oversimplify."
+  },
+  {
+    "id": "eval-005",
+    "query": "What is notable about the redshift Webb confirmed for galaxy MoM-z14, and how does it compare to the previous distance record holder?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-webb-pushes-boundaries-of-observable-universe-closer-to-4575aa87"
+    ],
+    "key_facts": [
+      "MoM-z14 has a confirmed redshift of 14.44",
+      "It existed roughly 280 million years after the Big Bang",
+      "The previous record holder, GN-z11, existed about 400 million years after the Big Bang"
+    ],
+    "notes": "Medium: combines a specific number with a comparison mentioned in the same article."
+  },
+  {
+    "id": "eval-006",
+    "query": "How did NASA's Webb telescope help identify the progenitor star of supernova 2025pht?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-s-webb-telescope-locates-former-star-that-exploded-as-s-a589d9f6"
+    ],
+    "key_facts": [
+      "Pre-existing Webb images from 2024 (MIRI and NIRCam) had already imaged the progenitor star",
+      "The progenitor was an unusually red, dusty red supergiant star",
+      "It was the first published detection of a supernova progenitor by Webb"
+    ],
+    "notes": "Medium: tests whether retrieval finds the specific mechanism, not just that Webb was involved."
+  },
+  {
+    "id": "eval-007",
+    "query": "What new JPL technology let the Perseverance rover pinpoint its own location on Mars for the first time without help from Earth, and how accurate is it?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "perseverance-pinpoints-its-location-at-mala-mala-d1746f76"
+    ],
+    "key_facts": [
+      "The technology is called Mars Global Localization",
+      "It determines location within about 10 inches (25 centimeters)",
+      "The process takes about two minutes and reuses a processor originally built for Ingenuity communications"
+    ],
+    "notes": "Medium: note that mars-global-localization-pinpoints-perseverance-s-location-cf260dea covers the identical event/facts as a near-duplicate release."
+  },
+  {
+    "id": "eval-008",
+    "query": "What distance milestone did Perseverance reach in June 2026, and how does that compare to the previous record holder?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-s-hirise-captures-perseverance-marking-a-milestone-on-m-e4e758ca"
+    ],
+    "key_facts": [
+      "Perseverance reached a marathon distance of 26.2 miles (42.195 km)",
+      "It took Perseverance 5 years and 4 months to reach that distance",
+      "The previous record holder, Opportunity, took 11 years and 2 months to reach the same distance"
+    ],
+    "notes": "Medium: requires the comparison, not just the milestone."
+  },
+  {
+    "id": "eval-009",
+    "query": "What curious finding about dark rocks near Curiosity's 'land of the polygons' terrain raised the question of whether they might be meteorites?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "curiosity-blog-sols-4934-4940-in-the-land-of-the-polygons-f7a07879"
+    ],
+    "key_facts": [
+      "Dark 'float' rocks in the area were found to contain nickel",
+      "Nickel is common in meteorites but less common in typical Martian rocks",
+      "This raised an open question about whether the dark pebble/cobble-sized rocks are meteorites"
+    ],
+    "notes": "Hard: a nuanced scientific inference buried in a mission blog post, not a headline fact."
+  },
+  {
+    "id": "eval-010",
+    "query": "How deep did Curiosity drill at the 'Campo Marte' target, and how does that compare to its usual drilling depth?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "curiosity-blog-sols-4900-4907-pasadena-we-have-a-drill-sampl-f6da741f"
+    ],
+    "key_facts": [
+      "Curiosity drilled to a depth of about 28 mm (roughly 1.1 inches)",
+      "That is shallower than its usual drilling depth of about 35 mm (1.38 inches)",
+      "One sample portion went to the CheMin instrument; four more were planned for SAM"
+    ],
+    "notes": "Medium: a specific numeric comparison from a mission blog."
+  },
+  {
+    "id": "eval-011",
+    "query": "Why are the rocks along Jezero Crater's rim considered especially scientifically valuable?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-s-perseverance-mars-rover-surveys-crocodile-bridge-ec88ef4a"
+    ],
+    "key_facts": [
+      "They are among the oldest rocks in the solar system",
+      "They are preserved because Mars, unlike Earth, lacks tectonic plates that recycle surface material"
+    ],
+    "notes": "Medium: explanatory reasoning rather than a single factoid."
+  },
+  {
+    "id": "eval-012",
+    "query": "How many images make up the 3D anaglyph version of Perseverance's panorama at 'Arbot'?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-s-perseverance-captures-panorama-at-arbot-7c110877"
+    ],
+    "key_facts": [
+      "The 3D anaglyph version (Figure B) is composed of 92 Mastcam-Z images",
+      "The panorama was captured April 5, 2026 (sol 1,882)"
+    ],
+    "notes": "Easy, but deliberately similar-sounding to the westernmost-selfie case (61 images) - tests retrieval precision against a near-duplicate topic."
+  },
+  {
+    "id": "eval-013",
+    "query": "What was significant about CAPSTONE's role as the first U.S. commercial mission at the Moon?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-s-capstone-completes-extended-mission-testing-lunar-tec-2b551e7f"
+    ],
+    "key_facts": [
+      "CAPSTONE was the first spacecraft to fly and characterize a near-rectilinear halo (three-body) orbit",
+      "It received a 15-month mission extension to test autonomous navigation (autoNGC) and delay/disruption tolerant networking"
+    ],
+    "notes": "Medium."
+  },
+  {
+    "id": "eval-014",
+    "query": "About how many acres of wooded land did NASA transfer from its Goddard Space Flight Center to the Patuxent Research Refuge?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-transfers-hundred-acre-wood-to-patuxent-research-refuge-2d601fae"
+    ],
+    "key_facts": [
+      "About 105 acres of wooded land",
+      "The land was formerly known as 'Area 400' and was used for propellant research"
+    ],
+    "notes": "Easy, single number."
+  },
+  {
+    "id": "eval-015",
+    "query": "How long was New Horizons' most recent hibernation period before it woke on June 23, and how far is the spacecraft from Earth?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-s-new-horizons-spacecraft-wakes-from-hibernation-in-goo-64bc627d"
+    ],
+    "key_facts": [
+      "The hibernation lasted 321 days, its longest yet",
+      "The spacecraft is about 5.9 billion miles (9.5 billion km) from Earth",
+      "Its signal took about 8 hours 52 minutes to reach Earth"
+    ],
+    "notes": "Medium: two distinct numbers in the same article."
+  },
+  {
+    "id": "eval-016",
+    "query": "How large was the Cottonwood fire in Utah as of July 7, 2026, and what NASA tool was used to track it?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "cottonwood-fire-chars-utah-85587d33"
+    ],
+    "key_facts": [
+      "The fire had burned 150 square miles (390 square kilometers)",
+      "NASA's FEDS (Fire Events Data Suite) was used to track it",
+      "FEDS uses VIIRS sensors aboard the Suomi NPP, NOAA-20, and NOAA-21 satellites"
+    ],
+    "notes": "Medium."
+  },
+  {
+    "id": "eval-017",
+    "query": "What water-level and temperature thresholds were associated with harmful algal blooms at Blue Mesa Reservoir, according to USGS research?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "examining-algal-blooms-in-blue-mesa-43f6338f"
+    ],
+    "key_facts": [
+      "Blooms were more common when water levels fell below 7,470 feet",
+      "Blooms were more common when water temperatures rose above about 19.5\u00b0C (67.1\u00b0F)"
+    ],
+    "notes": "Hard: precise numeric thresholds, easy to get approximately-but-not-exactly right."
+  },
+  {
+    "id": "eval-018",
+    "query": "Which two companies were selected under NASA's Commercial Crew Transportation Capability (CCtCap) contract announced in September 2014?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "the-nasa-commercial-crew-program-ccp-mission-assurance-proce-2f190ed1"
+    ],
+    "key_facts": [
+      "Boeing",
+      "SpaceX"
+    ],
+    "notes": "Easy, named-entity recall."
+  },
+  {
+    "id": "eval-019",
+    "query": "What were the call signs of the Apollo 10 command module and lunar module, and what was distinctive about them?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "mission-report-apollo-10-aa9ccfab"
+    ],
+    "key_facts": [
+      "The command module was called 'Charlie Brown'",
+      "The lunar module was called 'Snoopy'",
+      "Both were named after Peanuts comic strip characters",
+      "Snoopy descended to within 8.4 nautical miles of the lunar surface"
+    ],
+    "notes": "Medium: from an older, denser mission report document."
+  },
+  {
+    "id": "eval-020",
+    "query": "Who was the first American to orbit Earth, and how many orbits did he complete?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "this-is-nasa-e92fdf8e"
+    ],
+    "key_facts": [
+      "John H. Glenn Jr. was the first American to orbit Earth",
+      "He completed 3 orbits",
+      "This happened February 20, 1962"
+    ],
+    "notes": "Easy, general NASA history fact from a vintage booklet document."
+  },
+  {
+    "id": "eval-021",
+    "query": "How much did the rock that got stuck on Curiosity's drill in 2026 weigh, and how did the team eventually free it?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-s-curiosity-rover-frees-its-drill-from-a-rock-98365642",
+      "curiosity-blog-sols-4879-4885-struggle-at-atacama-d47ee019"
+    ],
+    "key_facts": [
+      "The rock weighed roughly 28.6 pounds (13 kilograms)",
+      "The rock was freed on May 1, 2026, after an earlier failed attempt on April 29",
+      "It was freed through reorientation of the arm and percussion/vibration of the drill"
+    ],
+    "notes": "Multi-doc: the photojournal release gives the weight, the mission blog gives the freeing process/timeline."
+  },
+  {
+    "id": "eval-022",
+    "query": "How do Webb's atmospheric findings compare between TRAPPIST-1 d and TRAPPIST-1 e?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-webb-looks-at-earth-sized-habitable-zone-exoplanet-trap-5a993473",
+      "webb-narrows-atmospheric-possibilities-for-earth-sized-exopl-bded4cf6"
+    ],
+    "key_facts": [
+      "For TRAPPIST-1 d, Webb ruled out water, methane, and CO2, ruling out an Earth-like atmosphere",
+      "For TRAPPIST-1 e, researchers believe any primary hydrogen-helium atmosphere was stripped by stellar radiation, and a secondary atmosphere is still uncertain",
+      "Neither planet has a confirmed atmosphere yet"
+    ],
+    "notes": "Multi-doc: requires combining two companion Webb studies of adjacent TRAPPIST-1 planets."
+  },
+  {
+    "id": "eval-023",
+    "query": "What was distinctive about the December 10, 2025 Perseverance rover drive along the Jezero Crater rim, and how was it visualized?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "video-perseverance-rover-s-view-of-crater-rim-drive-8d70774f",
+      "visualizing-perseverance-s-ai-planned-drive-on-mars-f88f9fd7"
+    ],
+    "key_facts": [
+      "The drive covered 807 feet (246 meters) along the crater rim on sol 1,709",
+      "Generative AI provided the route planning for this drive",
+      "One reconstruction used Navcam image pairs in a 3D environment; another used the 'Caspian' visualization tool"
+    ],
+    "notes": "Multi-doc: two releases describe the same drive from different visualization angles."
+  },
+  {
+    "id": "eval-024",
+    "query": "What evidence has Webb found for supermassive black holes forming very early in the universe, across different 'little red dot' galaxies?",
+    "category": "retrieval",
+    "expected_route": "retrieval",
+    "relevant_doc_ids": [
+      "nasa-s-webb-reveals-black-hole-that-formed-before-its-galaxy-90f28c32",
+      "nasa-webb-finds-strongest-evidence-yet-for-black-hole-stars-11eae9e1"
+    ],
+    "key_facts": [
+      "QSO1 existed just 700 million years after the Big Bang, with a black hole mass of about 50 million solar masses measured via Keplerian gas motion",
+      "GLIMPSE-17775 existed about 1.8 billion years after the Big Bang; a deep 30-hour spectrum revealed an 'iron forest' supporting the 'black hole star' model",
+      "Both are examples of gravitationally lensed 'little red dot' galaxies"
+    ],
+    "notes": "Multi-doc, hard: requires synthesizing two separate black-hole discovery articles."
+  },
+  {
+    "id": "eval-025",
+    "query": "Where is the ISS right now?",
+    "category": "tools",
+    "expected_route": "tools",
+    "relevant_doc_ids": [],
+    "key_facts": [
+      "Reports a current latitude and longitude for the ISS"
+    ],
+    "notes": "Expects the iss_now tool."
+  },
+  {
+    "id": "eval-026",
+    "query": "What is today's astronomy picture of the day?",
+    "category": "tools",
+    "expected_route": "tools",
+    "relevant_doc_ids": [],
+    "key_facts": [
+      "Reports a title, image/video, and explanation for a specific date's APOD"
+    ],
+    "notes": "Expects the apod tool (no date given, defaults to today)."
+  },
+  {
+    "id": "eval-027",
+    "query": "Show me the most recent photos from the Curiosity rover.",
+    "category": "tools",
+    "expected_route": "tools",
+    "relevant_doc_ids": [],
+    "key_facts": [
+      "Reports one or more Mars rover photos with camera name and Earth date, attributed to Curiosity"
+    ],
+    "notes": "Expects the mars_rover_photos tool with no date args (latest photos)."
+  },
+  {
+    "id": "eval-028",
+    "query": "Show me a JWST image of the Carina Nebula.",
+    "category": "tools",
+    "expected_route": "tools",
+    "relevant_doc_ids": [],
+    "key_facts": [
+      "Reports one or more JWST-related images/media with a title and description mentioning the Carina Nebula"
+    ],
+    "notes": "Expects the jwst_images tool, not search_documents (imagery lookup, not a science question)."
+  },
+  {
+    "id": "eval-029",
+    "query": "What's the current latitude and longitude of the International Space Station?",
+    "category": "tools",
+    "expected_route": "tools",
+    "relevant_doc_ids": [],
+    "key_facts": [
+      "Reports a current latitude and longitude for the ISS"
+    ],
+    "notes": "Rephrased version of eval-025 to check routing consistency across wording; expects iss_now."
+  },
+  {
+    "id": "eval-030",
+    "query": "Get me NASA's astronomy picture of the day for July 1, 2026.",
+    "category": "tools",
+    "expected_route": "tools",
+    "relevant_doc_ids": [],
+    "key_facts": [
+      "Reports the APOD specifically for 2026-07-01, including title and explanation"
+    ],
+    "notes": "Expects the apod tool with an explicit date argument."
+  },
+  {
+    "id": "eval-031",
+    "query": "Show me Perseverance rover photos from Mars.",
+    "category": "tools",
+    "expected_route": "tools",
+    "relevant_doc_ids": [],
+    "key_facts": [
+      "Reports one or more Mars rover photos attributed to Perseverance"
+    ],
+    "notes": "Expects the mars_rover_photos tool."
+  },
+  {
+    "id": "eval-032",
+    "query": "Find me JWST pictures related to exoplanets.",
+    "category": "tools",
+    "expected_route": "tools",
+    "relevant_doc_ids": [],
+    "key_facts": [
+      "Reports one or more JWST-related images/media whose titles or descriptions relate to exoplanets"
+    ],
+    "notes": "Expects the jwst_images tool, not search_documents."
+  },
+  {
+    "id": "eval-033",
+    "query": "Show me a JWST image of a supernova, and explain what Webb discovered about the star that exploded as supernova 2025pht.",
+    "category": "both",
+    "expected_route": "both",
+    "relevant_doc_ids": [
+      "nasa-s-webb-telescope-locates-former-star-that-exploded-as-s-a589d9f6"
+    ],
+    "key_facts": [
+      "Reports a JWST-related image/media result for a supernova",
+      "Explains that Webb's pre-existing 2024 images identified the progenitor as an unusually red, dusty red supergiant star",
+      "Notes this was the first published Webb detection of a supernova progenitor"
+    ],
+    "notes": "Both: jwst_images for the picture, search_documents for the science explanation."
+  },
+  {
+    "id": "eval-034",
+    "query": "Show me the most recent Perseverance rover photos, and tell me about the technology that helps Perseverance figure out its own location on Mars.",
+    "category": "both",
+    "expected_route": "both",
+    "relevant_doc_ids": [
+      "perseverance-pinpoints-its-location-at-mala-mala-d1746f76"
+    ],
+    "key_facts": [
+      "Reports one or more recent Perseverance photos",
+      "Explains Mars Global Localization: determines location to within about 10 inches (25 cm) in about two minutes"
+    ],
+    "notes": "Both: mars_rover_photos for the imagery, search_documents for the technology background."
+  },
+  {
+    "id": "eval-035",
+    "query": "What is today's astronomy picture of the day, and has Webb studied any exoplanets with extreme temperature swings like HD 80606 b?",
+    "category": "both",
+    "expected_route": "both",
+    "relevant_doc_ids": [
+      "nasa-s-webb-catches-exoplanet-getting-roasted-fe3b3711"
+    ],
+    "key_facts": [
+      "Reports today's APOD (title, explanation)",
+      "Explains that Webb observed HD 80606 b's temperature spike by about 1,100\u00b0F near periastron"
+    ],
+    "notes": "Both: apod for the picture of the day, search_documents for the HD 80606 b background."
+  },
+  {
+    "id": "eval-036",
+    "query": "Where is the ISS right now, and what has NASA said about future commercial space stations replacing it?",
+    "category": "both",
+    "expected_route": "both",
+    "relevant_doc_ids": [
+      "nasa-seeks-industry-input-on-second-phase-of-commercial-spac-d7e3b1f4"
+    ],
+    "key_facts": [
+      "Reports a current latitude and longitude for the ISS",
+      "Mentions NASA's draft RFP for the next phase of its commercial space stations strategy, transitioning activities from the ISS"
+    ],
+    "notes": "Both: iss_now for position, search_documents for the commercial-stations transition context."
+  },
+  {
+    "id": "eval-037",
+    "query": "What's the best pizza topping?",
+    "category": "out_of_scope",
+    "expected_route": "direct",
+    "relevant_doc_ids": [],
+    "key_facts": [
+      "declines to answer / states no grounds"
+    ],
+    "notes": "Off-topic; no NASA tool or corpus content applies."
+  },
+  {
+    "id": "eval-038",
+    "query": "hey",
+    "category": "out_of_scope",
+    "expected_route": "direct",
+    "relevant_doc_ids": [],
+    "key_facts": [
+      "declines to answer / states no grounds"
+    ],
+    "notes": "Empty-ish smalltalk with no question to route."
+  },
+  {
+    "id": "eval-039",
+    "query": "Can you help me plan a birthday party?",
+    "category": "out_of_scope",
+    "expected_route": "direct",
+    "relevant_doc_ids": [],
+    "key_facts": [
+      "declines to answer / states no grounds"
+    ],
+    "notes": "Off-topic personal request unrelated to NASA data."
+  },
+  {
+    "id": "eval-040",
+    "query": "What's the capital of France?",
+    "category": "out_of_scope",
+    "expected_route": "direct",
+    "relevant_doc_ids": [],
+    "key_facts": [
+      "declines to answer / states no grounds"
+    ],
+    "notes": "General trivia unrelated to NASA data; tests that the agent doesn't just answer from outside knowledge."
+  }
+]
