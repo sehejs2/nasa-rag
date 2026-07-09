@@ -1,4 +1,4 @@
-.PHONY: dev test lint db-up db-down db-init corpus chunk ingest search tool ask chat eval
+.PHONY: dev test lint db-up db-down db-init corpus chunk ingest search tool ask chat eval frontend frontend-build
 
 dev:
 	uv run uvicorn app.main:app --reload
@@ -41,3 +41,9 @@ chat:
 
 eval:
 	uv run python scripts/run_eval.py $(args)
+
+frontend:
+	cd frontend && npm run dev
+
+frontend-build:
+	cd frontend && npm run build

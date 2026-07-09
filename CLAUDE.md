@@ -137,6 +137,41 @@ console summary.
 corpus, not yet reviewed by a human. See `eval/REVIEW.md` for the review
 table. Do not treat reported numbers as validated until that review happens.
 
+## Frontend (Phase 8)
+
+`frontend/` is a Next.js (App Router) + TypeScript + Tailwind v4 chat UI, a
+pure consumer of the SSE protocol above — it does not change the backend
+contract. Single page, single-turn chat (no client-side memory faked across
+turns, since `/chat` itself is single-turn). No component library, no state
+management library: the surface is small enough to own directly with
+`useState`/`useRef` in `components/ChatApp.tsx`.
+
+- `lib/chatStream.ts` — hand-rolled SSE client. `EventSource` doesn't support
+  POST, so this is `fetch()` + `ReadableStream` reader + manual frame parsing
+  (buffers partial frames split across network chunks, splits on blank lines,
+  rejoins multi-line `data:` fields per the SSE spec), yielded as an async
+  generator of typed `ChatEvent`s. `AbortController` cancels the underlying
+  fetch, not just local listening.
+- `lib/types.ts` — exact TypeScript mirror of the five SSE event payloads;
+  keep in lockstep with `app/agent/chat_stream.py` if that ever changes.
+- Route badge (`components/RouteBadge.tsx`) renders from the `meta` event
+  before any answer text streams in: "📄 Retrieved docs" / "🛰 Live tool:
+  {names}" / "📄+🛰 Docs + live tools" / "💬 Direct".
+- Citations (`components/CitationChip.tsx`) resolve instantly because
+  `sources` always arrives before the first `delta`; unmatched `[n]` numbers
+  render as plain muted text rather than a broken chip.
+- **Only `lib/chatStream.ts` (the SSE parser) has a test suite**
+  (`lib/__tests__/chatStream.test.ts`, vitest, run via `npx vitest run` from
+  `frontend/`) — it's the one piece of genuinely fragile logic (frame
+  buffering/reassembly, abort mid-stream). No component or E2E tests this
+  phase; UI correctness was verified manually (Playwright screenshots at
+  1440px/390px, both empty and full-conversation states).
+- Run with `make frontend` (dev server, :3000) or build with
+  `make frontend-build`. API base URL comes from `NEXT_PUBLIC_API_URL`
+  (see `frontend/.env.example`), default `http://localhost:8000`. The
+  backend's CORS only allows `http://localhost:3000` — run the frontend on
+  that exact origin/port locally.
+
 ## Build phases
 
 0. Scaffold (this file, FastAPI skeleton, docker-compose) — DONE
@@ -147,7 +182,7 @@ table. Do not treat reported numbers as validated until that review happens.
 5. Agent router loop + routing test set (~15 labeled queries) — DONE
 6. Answer composition with inline citations + SSE streaming /chat — DONE
 7. Eval harness: 30-50 labeled Qs, precision/recall + faithfulness, `make eval` — DONE (eval set UNVERIFIED, pending human review)
-8. Next.js frontend: streamed chat, citations, retrieval-vs-tool badge
+8. Next.js frontend: streamed chat, citations, retrieval-vs-tool badge — DONE
 9. Deploy: backend + Postgres on Railway/Render, frontend on Vercel
 
 ## Conventions
