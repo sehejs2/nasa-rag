@@ -24,7 +24,9 @@ User query → Agent router (LLM decides: retrieve vs. live tool vs. both)
   Chunks never split mid-sentence. Chosen over embedding-based semantic chunking
   because embeddings are a Phase 2 concern — Phase 1 has no model calls, so
   structure is the only signal available for finding good split points.
-- Streaming: Server-Sent Events from FastAPI.
+- Streaming: Server-Sent Events from FastAPI, hand-rolled (no sse-starlette) -
+  event formatting is a single `format_sse_event()` string-join in
+  app/agent/chat_stream.py, not worth a dependency for.
 - Package management: uv. Run commands via Makefile targets.
 - Idempotent ingestion: each chunk row stores a content_hash (sha256 of chunk
   text). A chunk is only sent to the embeddings API if it's new, its
@@ -80,6 +82,33 @@ another tool, or answer without it) instead of crashing the request. Route
 ("retrieval" | "tools" | "both" | "direct") is derived after the fact from
 which tool names were actually called, not decided up front.
 
+## Chat: composition + streaming (Phase 6)
+
+POST /chat runs the agent loop (`run_agent(..., mark_draft_superseded=True)` -
+the trace's own draft_answer is discarded; /agent/debug and `make ask` don't
+pass this flag, so their output is unchanged), assembles a numbered source
+list (app/agent/sources.py: chunks from search_documents dedup'd by chunk_id
+first, then one source per successful live tool call, in call order - failed
+tool calls never become sources), then streams a fresh gpt-4o-mini completion
+(app/agent/composer.py) that's told to answer ONLY from those numbered sources
+and cite claims inline as `[1]` / `[2][3]`. Citations are validated
+(`validate_citations`) after the stream ends against the actual source
+numbers that exist - invalid citation numbers are reported, never silently
+rewritten into already-streamed text.
+
+### SSE event protocol (app/agent/chat_stream.py)
+
+Five event types, always in this order (or `error` in place of/instead of
+anything after the point of failure):
+
+1. `meta` — `{"route", "tools": [names], "iterations"}` - emitted as soon as the agent loop finishes, before composition starts.
+2. `sources` — `[Source, ...]` (the full numbered list) - before any answer text, so the frontend can resolve citations live as they stream.
+3. `delta` — `{"text": "..."}` - one per token/chunk of the composed answer.
+4. `done` — `{"total_latency_ms", "token_usage", "cited_sources": [ints], "invalid_citations": [ints]}`.
+5. `error` — `{"message": ...}` - agent-loop failures produce this before any `delta`; composition failures mid-stream produce it after whatever `delta`s already went out. The stream closes after `error` either way.
+
+This is the exact contract the Phase 8 frontend builds against; scripts/chat_client.py (`make chat`) is the reference consumer.
+
 ## Build phases
 
 0. Scaffold (this file, FastAPI skeleton, docker-compose) — DONE
@@ -88,7 +117,7 @@ which tool names were actually called, not decided up front.
 3. Retrieval + reranking, /retrieve debug endpoint — DONE
 4. NASA tool layer with function-calling schemas, mocked tests — DONE
 5. Agent router loop + routing test set (~15 labeled queries) — DONE
-6. Answer composition with inline citations + SSE streaming /chat
+6. Answer composition with inline citations + SSE streaming /chat — DONE
 7. Eval harness: 30-50 labeled Qs, precision/recall + faithfulness, `make eval`
 8. Next.js frontend: streamed chat, citations, retrieval-vs-tool badge
 9. Deploy: backend + Postgres on Railway/Render, frontend on Vercel
@@ -116,3 +145,4 @@ which tool names were actually called, not decided up front.
 - make search q="..." — debug tool: top-5 cosine-similarity matches for a query (see scripts/search_smoke.py)
 - make tool name=<tool> args='{"key": "value"}' — manually invoke a NASA tool (see scripts/run_tool.py)
 - make ask q="..." — run the agent loop end-to-end and print the trace + draft answer (see scripts/ask.py)
+- make chat q="..." — run POST /chat end-to-end and stream the cited answer + sources (see scripts/chat_client.py)

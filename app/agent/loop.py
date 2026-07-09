@@ -113,6 +113,8 @@ async def _execute_tool_call(tool_call: Any, iteration: int) -> tuple[ToolCallRe
         result_ok=result.ok,
         result_summary=summary,
         latency_ms=result.latency_ms,
+        call_id=tool_call.id,
+        result_data=result.data if result.ok else None,
     )
     return record, result
 
@@ -136,6 +138,7 @@ def _build_trace(
     stopped_reason: str,
     start: float,
     token_usage: TokenUsage,
+    draft_answer_superseded: bool,
 ) -> AgentTrace:
     return AgentTrace(
         query=query,
@@ -147,6 +150,7 @@ def _build_trace(
         stopped_reason=stopped_reason,
         total_latency_ms=(time.perf_counter() - start) * 1000,
         token_usage=token_usage,
+        draft_answer_superseded=draft_answer_superseded,
     )
 
 
@@ -155,7 +159,17 @@ async def run_agent(
     max_iterations: int = 4,
     *,
     client: AsyncOpenAI | None = None,
+    mark_draft_superseded: bool = False,
 ) -> AgentTrace:
+    """Run the agent loop for tool orchestration and a draft answer.
+
+    mark_draft_superseded=True is for the Phase 6 /chat path: the loop still
+    runs exactly the same way and draft_answer is still captured the same way
+    (nothing is skipped), but the trace is flagged so callers know
+    draft_answer isn't meant to be shown directly - /chat recomposes a cited
+    answer from the trace's sources instead. /agent/debug and make ask don't
+    pass this, so their behavior is unchanged.
+    """
     client = client or AsyncOpenAI(
         api_key=settings.OPENAI_API_KEY,
         timeout=OPENAI_REQUEST_TIMEOUT_SECONDS,
@@ -208,6 +222,7 @@ async def run_agent(
                 stopped_reason="model_finished",
                 start=start,
                 token_usage=token_usage,
+                draft_answer_superseded=mark_draft_superseded,
             )
 
         results = await asyncio.gather(
@@ -242,4 +257,5 @@ async def run_agent(
         stopped_reason="max_iterations",
         start=start,
         token_usage=token_usage,
+        draft_answer_superseded=mark_draft_superseded,
     )

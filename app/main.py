@@ -1,7 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
+from app.agent.chat_stream import chat_event_stream
 from app.agent.loop import run_agent
 from app.retrieval.retriever import retrieve
 
@@ -14,6 +16,10 @@ class RetrieveRequest(BaseModel):
 
 
 class AgentDebugRequest(BaseModel):
+    query: str
+
+
+class ChatRequest(BaseModel):
     query: str
 
 
@@ -60,6 +66,18 @@ def create_app() -> FastAPI:
     @app.post("/agent/debug")
     async def agent_debug_endpoint(body: AgentDebugRequest):
         return await run_agent(body.query)
+
+    # Primary user-facing endpoint: runs the agent loop, then streams a cited
+    # answer via SSE. See app/agent/chat_stream.py for the event protocol
+    # (meta -> sources -> delta* -> done, or error) - documented in CLAUDE.md
+    # as the contract the Phase 8 frontend builds against.
+    @app.post("/chat")
+    async def chat_endpoint(body: ChatRequest, request: Request):
+        return StreamingResponse(
+            chat_event_stream(body.query, request),
+            media_type="text/event-stream",
+            headers={"Cache-Control": "no-cache"},
+        )
 
     return app
 

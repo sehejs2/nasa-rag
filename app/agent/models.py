@@ -19,6 +19,11 @@ class ToolCallRecord(BaseModel):
     result_ok: bool
     result_summary: str
     latency_ms: float
+    call_id: str = ""
+    # Full, untruncated ToolResult.data (None for failed calls) - result_summary
+    # above is truncated for human-readable display; Phase 6 source assembly
+    # (app/agent/sources.py) needs the full payload to extract e.g. image URLs.
+    result_data: dict | None = None
 
 
 class TokenUsage(BaseModel):
@@ -37,3 +42,8 @@ class AgentTrace(BaseModel):
     stopped_reason: StoppedReason
     total_latency_ms: float
     token_usage: TokenUsage
+    # True when the caller (the Phase 6 /chat path) intends to recompose a
+    # cited answer from the trace's sources rather than show draft_answer
+    # directly. draft_answer is always populated the same way either way -
+    # this is purely an informational marker for consumers.
+    draft_answer_superseded: bool = False
