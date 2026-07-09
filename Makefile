@@ -1,4 +1,4 @@
-.PHONY: dev test lint db-up db-down db-init corpus chunk ingest search tool ask chat eval frontend frontend-build
+.PHONY: dev test lint db-up db-down db-init corpus chunk ingest search tool ask chat eval frontend frontend-build docker-build docker-run
 
 dev:
 	uv run uvicorn app.main:app --reload
@@ -47,3 +47,9 @@ frontend:
 
 frontend-build:
 	cd frontend && npm run build
+
+docker-build:
+	docker build -t nasa-rag-backend .
+
+docker-run:
+	docker run --rm -p 8000:8000 --env-file .env nasa-rag-backend

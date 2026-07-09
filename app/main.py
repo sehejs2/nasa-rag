@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 from app.agent.chat_stream import chat_event_stream
 from app.agent.loop import run_agent
+from app.config import settings
 from app.retrieval.retriever import retrieve
 
 TEXT_PREVIEW_CHARS = 300
@@ -28,7 +29,7 @@ def create_app() -> FastAPI:
 
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["http://localhost:3000"],
+        allow_origins=settings.cors_origins_list,
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],

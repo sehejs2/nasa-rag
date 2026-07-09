@@ -172,6 +172,17 @@ management library: the surface is small enough to own directly with
   backend's CORS only allows `http://localhost:3000` — run the frontend on
   that exact origin/port locally.
 
+## Deployment (Phase 9)
+
+Backend ships as a single multi-stage `Dockerfile` (uv-based build, non-root
+runtime user, `HEALTHCHECK` against `/health`, honors `$PORT`) that Railway
+builds directly — no `railway.json`/`render.yaml`, the Dockerfile is the
+contract. CORS origins moved from a hardcoded list in `app/main.py` to the
+`CORS_ORIGINS` env var (comma-separated, `app/config.py`), so the production
+Vercel origin can be added without a code change; `DATABASE_URL` is
+normalized from `postgres://` to `postgresql://` for platforms (Railway)
+that hand out the legacy scheme.
+
 ## Build phases
 
 0. Scaffold (this file, FastAPI skeleton, docker-compose) — DONE
@@ -183,7 +194,7 @@ management library: the surface is small enough to own directly with
 6. Answer composition with inline citations + SSE streaming /chat — DONE
 7. Eval harness: 30-50 labeled Qs, precision/recall + faithfulness, `make eval` — DONE (eval set UNVERIFIED, pending human review)
 8. Next.js frontend: streamed chat, citations, retrieval-vs-tool badge — DONE
-9. Deploy: backend + Postgres on Railway/Render, frontend on Vercel
+9. Deploy: backend + Postgres on Railway, frontend on Vercel — DONE (Dockerfile + prod config; user runs the platform dashboard steps)
 
 ## Conventions
 
@@ -210,3 +221,6 @@ management library: the surface is small enough to own directly with
 - make ask q="..." — run the agent loop end-to-end and print the trace + draft answer (see scripts/ask.py)
 - make chat q="..." — run POST /chat end-to-end and stream the cited answer + sources (see scripts/chat_client.py)
 - make eval args="..." — run the eval harness (see scripts/run_eval.py; flags: --cases, --rerank on|off|both, --limit N, --concurrency)
+- make frontend / make frontend-build — run/build the Next.js frontend (see frontend/)
+- make docker-build — build the backend production image (see Dockerfile)
+- make docker-run — run the backend image locally with --env-file .env, mapped to :8000
